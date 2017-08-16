@@ -1,0 +1,26 @@
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* background-color: gray; */
+}
+
+.video {
+    margin: 0px;
+    position: relative;
+    z-index: -1;
+}
+
+#video {
+    position: absolute;
+    opacity: .8;
+}
+
+.form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
