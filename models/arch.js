@@ -23,11 +23,12 @@ module.exports = function (sequelize, DataTypes){
       }
     }
   });
-  Arch.associate = function(models) {
-  Arch.hasMany(models.Client, {
-    onDelete: 'CASCADE'
-  });
-  };
+
+  // Arch.associate = function(models) {
+  // Arch.hasMany(models.Client, {
+  //   onDelete: 'CASCADE'
+  // });
+  // };
   return Arch;
 };
 //email address, physical address, phone number
