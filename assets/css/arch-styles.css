@@ -1,45 +1,54 @@
 html,
 body {
     margin: 0px auto;
+    height: 100vh;
+    width: 100vw;
 }
-
-.clients {
+.col-lg-6, 
+.col-lg-5,
+.col-lg-2   {
+    margin: 0px;
+    padding: 0px;
 }
 
 div {
     /* border: 1px solid black; */
     padding: 0px;
 }
-
-.client-overview {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.main-body {
+    padding: 5px;
+}
+.client-list {
+    height: 100%;
+    align-self: left;
+    margin: 5px;
 }
 
 .client-info {
-    width: 50%;
-    height: 100%;
+   margin: 5px;
 }
-
-
-/* .folders {
-    width: 35%;
-    height: 65%;
-} */
-
 .files {
-    width: 50%;
-    height: 100%;
-}
-
-.uploader {
-    position: absolute;
-    bottom: 0px;
+    margin: 5px;
 }
 
 
-/* .comments {
+.panel-body {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+}
+.panel-heading {
     width: 100%;
-    height: 35%;
-} */
+    font-size: 2em;
+}
+.panel-info {
+    border-color: black;
+}
+.panel-info > .panel-heading {
+    background-color: gray;
+    border-color: gray;
+    color: white;
+}

@@ -1,60 +1,71 @@
-<h1>Logged in as:</h1>
-<div class=row>
-    <div class="clients col-lg-2 col-xs-2">
-        <div class="client-list">
-            <h2>Client List:</h2>
-            <ul>
-                <a href="#">
-                    <li>Clinet One</li>
-                </a>
-                <a href="#">
-                    <li>Client Two</li>
-                </a>
-                <a href="#">
-                    <li>Client Three</li>
-                </a>
-                <a href="#">
-                    <li>Client Four</li>
-                </a>
-            </ul>
+<div class="panel panel-default">
+    <div class="panel-heading">Logged in as: *Architect Name/Email*</div>
+    <div class="panel-body main-body">
+        <div class="panel panel-info client-list col-lg-2">
+            <div class="panel-heading">Client List:</div>
+            <div class="panel-body">
+                <ul>
+                    <a href="#">
+                        <li>Clinet One</li>
+                    </a>
+                    <a href="#">
+                        <li>Client Two</li>
+                    </a>
+                    <a href="#">
+                        <li>Client Three</li>
+                    </a>
+                    <a href="#">
+                        <li>Client Four</li>
+                    </a>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="client-overview col-lg-10 col-xs-10">
-        <div class="client-info">
-            <h1>Client One:</h1>
-            <p>Address:</p>
-            <p>1010 West Ave. Los Angeles, CA 90000</p>
-            <p>Contact:</p>
-            <p>Jeremy A. Estheban</p>
-            <p>Email: blank@blank.com </p>
-            <p>Phone: 555-555-1234</p>
+        <div class="client-overview col-lg-9">
+            <div class="panel panel-info client-info col-lg-5">
+                <div class="panel-heading">
+                    Client One:
+                </div>
+                <div class="panel-body">
+                    <ul>Contact:
+                        <li>Address: 1010 West Ave. Los Angeles, CA 90000</li>
+                        <li>Point of Contact: Jeremy A. Estheban</li>
+                        <li>Email: blank@blank.com</li>
+                        <li>Phone: 555-555-1234 </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-info files col-lg-6">
+                <div class="panel-heading">Files:</div>
+                <div class="panel-body">
+                    <ul>
+                        <a href="#">
+                            <li>Plans-Set One </li>
+                        </a>
+                        <a href="#">
+                            <li>Services Contracts</li>
+                        </a>
+                        <a href="#">
+                            <li>Billing Spreadhseet</li>
+                        </a>
+
+                    </ul>
+                </div>
+                <div class="panel panel-info uploader">
+                    <div class="panel-heading">Upload File</div>
+                    <div class="panel-body">
+                        <div class="progress-bar" role="progressbar"></div>
+                        <button class="btn btn-lg upload-btn" type="button">Upload</button>
+                    </div>
+                </div>
+            </div>
         </div>
         {{!--
         <div class="folders">
             <h1>Folders:</h1>
-        </div> --}}
-        <div class="files">
-            <h1>Files:</h1>
-            <ul>
-                <a href="#">
-                    <li>Plans-Set One </li>
-                </a>
-                <a href="#">
-                    <li>Services Contracts</li>
-                </a>
-                <a href="#">
-                    <li>Billing Spreadhseet</li>
-                </a>
-            </ul>
-            <div class="uploader">
-                <h2>Upload New File to Client</h2>
-                <div class="progress-bar" role="progressbar"></div>
-                <button class="btn btn-lg upload-btn" type="button">Upload File</button>
-            </div>
-        </div>
-        {{!--
+        </div> --}} {{!--
         <div class="comments">
             <h1>Comments:</h1>
         </div> --}}
     </div>
+
 </div>
