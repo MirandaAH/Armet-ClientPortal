@@ -2,6 +2,7 @@ var path = require('path');
 var isAuthenticated = require('../config/middleware/isAuthenticated');
 
 var passport = require('../config/passport');
+var passport2 = require('../config/passport2');
 var db = require('../models');
 
 module.exports = function(app) {
@@ -53,8 +54,37 @@ module.exports = function(app) {
     response.redirect('/archlogged');
   });
 
-  app.post('/api/clientlogin', passport.authenticate('local2'), function(request, response) { //Client Login
+  app.post('/api/clientlogin', passport2.authenticate('local2'), function(request, response) { //Client Login
     response.redirect('/clientlogged');
+  });
+
+  app.post('/api/login', function(request, response) {
+
+    if (request.body.userType === 'client') {
+      db.Client.findAll({
+        where: {
+          email: request.body.email,
+          password: request.body.password
+        }
+      }).then(function() {
+        response.redirect(307, '/api/clientlogin');
+      }).catch(function(error) {
+        console.log('ERROR: ' + error);
+        response.json(error);
+      });
+    } else if (request.body.userType === 'architect') {
+      db.Arch.findAll({
+        where: {
+          email: request.body.email,
+          password: request.body.password
+        }
+      }).then(function() {
+        response.redirect(307, '/api/archlogin');
+      }).catch(function(error) {
+        console.log('ERROR: ' + error);
+        response.json(error);
+      });
+    }
   });
 
   app.post('/api/signup', function(request, response) { //Create New Arch or New Client
