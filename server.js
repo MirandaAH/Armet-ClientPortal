@@ -4,7 +4,7 @@ const methOver = require('method-override');
 const expHbars = require('express-handlebars');
 const session = require('express-session');
 const passport = require('./config/passport.js');
-const clientPass = require('./config/clientpassport.js');
+const passport2 = require('./config/passport2.js');
 const db = require('./models'); //MODELS
 
 const app = express();
@@ -22,10 +22,8 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json'}));
 //express sessions - manage user login sessions
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
+app.use(passport2.initialize());
 app.use(passport.session());
-
-app.use(clientPass.initialize());
-app.use(clientPass.session());
 
 //method override for put/delete
 app.use(methOver('_method'));
@@ -40,7 +38,7 @@ app.set('view engine', 'handlebars');
 require('./controllers/auth.js')(app);
 
 db.sequelize.sync({force: true}).then(function() {
-app.listen(PORT, function() {
-  console.log('Listening on port: ' + PORT);
-});
+  app.listen(PORT, function() {
+    console.log('Listening on port: ' + PORT);
+  });
 });

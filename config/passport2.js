@@ -1,5 +1,5 @@
 var passport = require("passport");
-var LocalStrategy = require("passport-local").Strategy;
+var LocalStrategy = require("passport-local2").Strategy;
 
 var db = require("../models");
 
@@ -10,6 +10,7 @@ passport.use(new LocalStrategy(
     usernameField: "email"
   },
   function(email, password, done) {
+    console.log(email, password);
     // When a user tries to sign in this code runs
     db.Client.findOne({
       where: {

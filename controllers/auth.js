@@ -53,7 +53,7 @@ module.exports = function(app) {
     response.redirect('/archlogged');
   });
 
-  app.post('/api/clientlogin', passport.authenticate('local'), function(request, response) { //Client Login
+  app.post('/api/clientlogin', passport.authenticate('local2'), function(request, response) { //Client Login
     response.redirect('/clientlogged');
   });
 
