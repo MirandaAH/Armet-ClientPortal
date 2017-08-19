@@ -31,15 +31,6 @@ div {
     margin: 5px;
 }
 
-
-.panel-body {
-    display: flex;
-    flex-direction: row;
-    align-items: top;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    
-}
 .panel-heading {
     width: 100%;
     font-size: 2em;
@@ -51,4 +42,10 @@ div {
     background-color: gray;
     border-color: gray;
     color: white;
+}
+.uploader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
 }
