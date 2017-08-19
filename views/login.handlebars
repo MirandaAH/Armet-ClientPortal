@@ -8,8 +8,9 @@
         <div class="panel-heading">
           <h3 class="panel-title">Please sign in</h3>
         </div>
+        <a href="/">Home</a>
         <div class="panel-body">
-          <form action="/userauth" method="POST" accept-charset="UTF-8" role="form">
+          <form action="/api/login" method="POST" accept-charset="UTF-8" role="form">
             <fieldset>
               <div class="form-group">
                 <input class="form-control" placeholder="User" name="name" type="text">
@@ -25,6 +26,7 @@
               <input class="btn btn-lg btn-default btn-block" type="submit" value="Login">
             </fieldset>
           </form>
+          <a href="/signup">Sign Up</a>
         </div>
       </div>
     </div>

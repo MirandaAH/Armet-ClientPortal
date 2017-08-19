@@ -2,56 +2,41 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const methOver = require('method-override');
 const expHbars = require('express-handlebars');
-
+const session = require('express-session');
+const passport = require('./config/passport.js');
+const db = require('./models'); //MODELS
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(express.static('./public'));
+//express static -where you get your static files (css, js, images, etc...)
+app.use(express.static('./assets')); //
+
+//bodyParser - parsing responses
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json'}));
+
+//express sessions - manage user login sessions
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+//method override for put/delete
 app.use(methOver('_method'));
+
+//exp-handlebars
 app.engine('handlebars', expHbars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-require('./controller/arch/html-routes.js')(app);
-require('./controller/client/html-routes.js')(app);
-require('./controller/userauth.js')(app);
-
-const db = require('./models');
+//controllers
+//require('./controller/arch/html-routes.js')(app);
+//require('./controller/client/html-routes.js')(app);
+require('./controllers/auth.js')(app);
 
 db.sequelize.sync({force:true}).then(function() {
 app.listen(PORT, function() {
   console.log('Listening on port: ' + PORT);
 });
 });
-
-// var express = require('express');
-//
-// var app = express();
-// var port = process.env.PORT || 8080;
-//
-// var bodyParser = require("body-parser");
-// var methodOverride = require('method-override');
-// var expHbars = require('express-handlebars');
-// var db = require('./models');
-//
-//
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
-// app.use(bodyParser.text());
-// app.use(bodyParser.json({type: 'application/vnd.api+json'}));
-//
-// app.use(methodOverride('_method'));
-//
-// app.engine('handlebars', expHbars({ defaultLayout: 'main'}));
-// app.set('view engine', 'handlebars');
-//
-//
-// db.sequelize.sync({}).then(function(){
-//   app.listen(PORT, function() {
-//     console.log('Connection Successful');
-//   });
-// })
