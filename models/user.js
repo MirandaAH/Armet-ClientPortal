@@ -17,7 +17,12 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    // permissions: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   defaultValue: 'client'
+    // }
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
@@ -28,5 +33,20 @@ module.exports = function(sequelize, DataTypes) {
   User.hook("beforeCreate", function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
+
+//   User.associate = function(models) {
+//   User.hasMany(models.Client, {
+//     onDelete: 'CASCADE'
+//   });
+// };
+//
+// User.associate = function(models) {
+//   User.belongsTo(models.Arch, {
+//     foreignKey: {
+//       allowNull: false
+//     }
+//   });
+// };
+
   return User;
 };

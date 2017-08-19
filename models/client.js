@@ -9,8 +9,13 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  Client.associate = function (models){
-    Client.belongsTo(models.Arch);
+
+  Client.associate = function(models) {
+    Client.belongsTo(models.Arch, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
   return Client;
-}
+};

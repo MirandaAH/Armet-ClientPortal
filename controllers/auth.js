@@ -29,7 +29,7 @@ module.exports = function(app) {
     response.render('signup');
   });
 
-  app.get('/logged', isAuthenticated, function(request, response) { //?????
+  app.get('/logged', isAuthenticated, function(request, response) {
     console.log('I am: ' + request.user.email);
 
     var hbsObject = {
@@ -46,20 +46,20 @@ module.exports = function(app) {
 
 //api-routes
   app.post('/api/login', passport.authenticate('local'), function(request, response) {
-    response.redirect('/logged'); //?????
+    response.redirect('/logged');
   });
 
-  app.post('/api/signup', function(request, response) { //?????
+  app.post("/api/signup", function(request, response) {
     db.User.create({
       email: request.body.email,
       password: request.body.password
     }).then(function() {
-      response.redirect(307, '/api/login');
+      response.redirect(307, '/logged');
     }).catch(function(error) {
       console.log(error);
       response.json(error);
+      // res.status(422).json(err.errors[0].message);
     });
   });
-
 
 };
