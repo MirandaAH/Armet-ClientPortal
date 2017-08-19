@@ -35,7 +35,7 @@ app.set('view engine', 'handlebars');
 //require('./controller/client/html-routes.js')(app);
 require('./controllers/auth.js')(app);
 
-db.sequelize.sync({force:true}).then(function() {
+db.sequelize.sync({}).then(function() {
 app.listen(PORT, function() {
   console.log('Listening on port: ' + PORT);
 });
