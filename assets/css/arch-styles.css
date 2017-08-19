@@ -1,41 +1,45 @@
-html, body {
-    height: 100vh;
-    width: 100vw;
+html,
+body {
     margin: 0px auto;
-    
 }
+
 .clients {
-    height: 100vh; 
 }
-.client-list {
-    
-}
+
 div {
-    border:1px solid black;
+    /* border: 1px solid black; */
     padding: 0px;
 }
+
 .client-overview {
-    height: 100vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 .client-info {
-    width: 30%;
-    height: 65%;
+    width: 50%;
+    height: 100%;
 }
 
-.folders {
+
+/* .folders {
     width: 35%;
     height: 65%;
-}
+} */
 
 .files {
-    width: 35%;
-    height: 65%;
+    width: 50%;
+    height: 100%;
 }
-.comments {
+
+.uploader {
+    position: absolute;
+    bottom: 0px;
+}
+
+
+/* .comments {
     width: 100%;
     height: 35%;
-}
+} */
