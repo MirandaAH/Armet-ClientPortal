@@ -6,6 +6,10 @@ const session = require('express-session');
 const passport = require('./config/passport.js');
 const db = require('./models'); //MODELS
 
+const path = require('path');
+const formidable = require('formidable');
+const fs = require('fs');
+
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -34,6 +38,7 @@ app.set('view engine', 'handlebars');
 //require('./controller/arch/html-routes.js')(app);
 //require('./controller/client/html-routes.js')(app);
 require('./controllers/auth.js')(app);
+require('./controllers/arch/arch_controller.js')(app);
 
 db.sequelize.sync({force: true}).then(function() {
 app.listen(PORT, function() {

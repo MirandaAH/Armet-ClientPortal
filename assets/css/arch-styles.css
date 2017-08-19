@@ -38,6 +38,9 @@ div {
     bottom: 0px;
 }
 
+#upload-input {
+  display: none;
+}
 
 /* .comments {
     width: 100%;
