@@ -29,13 +29,18 @@ module.exports = function(app) {
     response.render('signup');
   });
 
-  app.get('/archlogged', isAuthenticated, function(request, response) { //LOGGED IN
-
+  app.get('/archlogged', isAuthenticated, function(request, response) { //ARCH LOGGED IN
     var hbsObject = {
       user: request.user
     };
-
     response.render('arch-interface', hbsObject);
+  });
+
+  app.get('/clientlogged', isAuthenticated, function(request, response) { //CLIENT LOGGED IN
+    var hbsObject = {
+      user: request.user
+    };
+    response.render('client-interface', hbsObject);
   });
 
   app.get('/logout', function(request, response) { //LOG OUT
@@ -44,29 +49,38 @@ module.exports = function(app) {
   });
 
 //api-routes
-  app.post('/api/login', passport.authenticate('local'), function(request, response) {
+  app.post('/api/archlogin', passport.authenticate('local'), function(request, response) { //Architect Login
     response.redirect('/archlogged');
   });
 
-  app.post('/api/signup', function(request, response) {
-    console.log(request.body.userType);
+  app.post('/api/clientlogin', passport.authenticate('local'), function(request, response) { //Client Login
+    response.redirect('/clientlogged');
+  });
 
+  app.post('/api/signup', function(request, response) { //Create New Arch or New Client
     if (request.body.userType === 'architect') {
       db.Arch.create({
         email: request.body.email,
         password: request.body.password
       }).then(function() {
-        response.redirect(307, '/api/login');
+        response.redirect(307, '/api/archlogin');
       }).catch(function(error) {
         console.log(error);
         response.json(error);
       });
     } else if (request.body.userType === 'client') {
-
+      db.Client.create({
+        email: request.body.email,
+        password: request.body.password
+      }).then(function() {
+        response.redirect(307, '/api/clientlogin');
+      }).catch(function(error) {
+        console.log(error);
+        response.json(error);
+      });
     } else {
       console.log('Error');
     }
-
   });
 
 
