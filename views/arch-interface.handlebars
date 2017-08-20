@@ -1,2 +1,68 @@
-<h1>Architects</h1>
-<a href="/logout">Logout</a>
+<div class="panel panel-default">
+    <div class="panel-heading">Logged in as: {{user.email}}</div>
+    <div class="panel-body main-body">
+        <div class="panel panel-info client-list col-lg-2">
+            <div class="panel-heading">Client List:</div>
+            <div class="panel-body">
+                <ul>
+                    <a href="#">
+                        <li>Clinet One</li>
+                    </a>
+                    <a href="#">
+                        <li>Client Two</li>
+                    </a>
+                    <a href="#">
+                        <li>Client Three</li>
+                    </a>
+                    <a href="#">
+                        <li>Client Four</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="client-overview col-lg-9">
+            <div class="panel panel-info client-info col-lg-5">
+                <div class="panel-heading">
+                    Client One:
+                </div>
+                <div class="panel-body">
+                    <ul>Contact:
+                        <li>Address: 1010 West Ave. Los Angeles, CA 90000</li>
+                        <li>Point of Contact: Jeremy A. Estheban</li>
+                        <li>Email: blank@blank.com</li>
+                        <li>Phone: 555-555-1234 </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-info files col-lg-6">
+                <div class="panel-heading">Files:</div>
+                <div class="panel-body">
+                    <ul>
+                        <a href="#">
+                            <li>Plans-Set One </li>
+                        </a>
+                        <a href="#">
+                            <li>Services Contracts</li>
+                        </a>
+                        <a href="#">
+                            <li>Billing Spreadhseet</li>
+                        </a>
+
+                    </ul>
+                </div>
+                <div class="uploader">
+                    <h4>Upload File</h4>
+                    <div class="progress-bar" role="progressbar"></div>
+                    <button class="btn btn-lg upload-btn" type="button">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{!--
+<div class="folders">
+    <h1>Folders:</h1>
+</div> --}} {{!--
+<div class="comments">
+    <h1>Comments:</h1>
+</div> --}}
