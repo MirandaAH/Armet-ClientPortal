@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 let isAuthenticated = require('../../config/middleware/isAuthenticated');
 let db = require('../../models');
 
@@ -46,7 +45,6 @@ module.exports = function(app) {
     });
   });
 };
-=======
 var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
@@ -72,4 +70,3 @@ module.exports = function (app){
   form.parse(req);
   });
 }
->>>>>>> uploads
