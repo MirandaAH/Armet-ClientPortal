@@ -7,6 +7,10 @@ const passport = require('./config/passport.js');
 const passport2 = require('./config/passport2.js');
 const db = require('./models'); //MODELS
 
+const path = require('path');
+const formidable = require('formidable');
+const fs = require('fs');
+
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -37,6 +41,7 @@ require('./controllers/auth.js')(app);
 require('./controllers/public.js')(app);
 require('./controllers/arch/arch_controller.js')(app);
 require('./controllers/client/client_controller.js')(app);
+require('./controllers/arch/arch_controller.js')(app);
 
 db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {
