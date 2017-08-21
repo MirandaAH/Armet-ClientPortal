@@ -82,6 +82,7 @@ module.exports = function(app) {
   });
 
   app.post('/api/signup', function(request, response) { //Arch/Client Sign Up
+
     if (request.body.userType === 'architect') {
       db.Arch.create({
         email: request.body.email.trim(),

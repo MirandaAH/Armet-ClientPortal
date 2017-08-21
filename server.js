@@ -41,5 +41,6 @@ require('./controllers/client/client_controller.js')(app);
 db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {
     console.log('Listening on port: ' + PORT);
+    //require('./config/seeds.js')();
   });
 });

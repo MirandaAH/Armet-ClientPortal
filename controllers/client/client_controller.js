@@ -35,7 +35,11 @@ module.exports = function(app) {
       include: [
         {
         model: db.ClientContact,
-        include: [{model: db.Arch}]
+        include: [{model: db.Arch,
+                   include: [{model: db.ArchContact,
+                              attributes: ['first_name']
+                            }]
+                 }]
       }
       ]
     }).then(function(data) {
