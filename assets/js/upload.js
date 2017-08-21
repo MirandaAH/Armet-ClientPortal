@@ -35,7 +35,7 @@ $('#upload-input').on('change', function(){
         xhr.upload.addEventListener('progress', function(evt) {
 
           if (evt.lengthComputable) {
-            
+
             var percentComplete = evt.loaded / evt.total;
             percentComplete = parseInt(percentComplete * 100);
 
