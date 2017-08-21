@@ -1,5 +1,8 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Logged in as: {{user.email}} <a href="/logout">Logout</a></div>
+    <div class="panel-heading">Logged in as: {{arch.ArchContact.first_name}} {{arch.ArchContact.last_name}}
+      <a href="/logout">Logout</a>
+      <a href="/settings">Settings</a>
+    </div>
     <div class="panel-body main-body">
         <div class="panel panel-info client-list col-lg-2">
             <div class="panel-heading">Client List:</div>
@@ -59,6 +62,7 @@
         </div>
     </div>
 </div>
+<script src="js/arch-view.js"></script>
 {{!--
 <div class="folders">
     <h1>Folders:</h1>

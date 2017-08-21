@@ -33,9 +33,10 @@ app.engine('handlebars', expHbars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 //controllers
-//require('./controller/arch/html-routes.js')(app);
-//require('./controller/client/html-routes.js')(app);
 require('./controllers/auth.js')(app);
+require('./controllers/public.js')(app);
+require('./controllers/arch/arch_controller.js')(app);
+require('./controllers/client/client_controller.js')(app);
 
 db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {

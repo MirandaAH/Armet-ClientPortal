@@ -30,10 +30,11 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Arch.associate = function(models) {
-  Arch.hasMany(models.Client, {
-    onDelete: 'CASCADE'
-  });
-};
+    Arch.hasMany(models.Client, { //multiple clients
+      onDelete: 'CASCADE'
+    });
+    Arch.hasOne(models.ArchContact); //single set of contact info
+  };
 
   return Arch;
 };

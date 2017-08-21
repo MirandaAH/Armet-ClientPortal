@@ -30,9 +30,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Client.associate = function(models) {
-  Client.belongsTo(models.Arch, {
-    onDelete: 'CASCADE'
-  });
+  Client.hasOne(models.ClientContact);
 };
 
   return Client;
