@@ -1,40 +1,54 @@
 <link rel="stylesheet" href="css/client-styles.css">
-<h1>Welcome {{client.ClientContact.first_name}}</h1>
-<div class="row client-title">
-  <a href="/logout">Logout</a>
-        <h1>Client One</h1>
+<div class="panel panel-default">
+    <div class="panel-heading">Logged in as: {{client.ClientContact.first_name}} {{client.ClintContact.last_name}}
+
+        <div class="options">
+            <a href="/logout">Logout</a>
+        </div>
     </div>
-    <div class=row>
-        <div class="col-lg-2 col-xs-2 folders">
-                <h2>Folders:</h2>
+    <div class="panel-body main-body">
+        <div class="panel panel-info file-list col-lg-3">
+            <div class="panel-heading">File List:</div>
+            <div class="panel-body">
                 <ul>
                     <a href="#">
-                        <li>Folder One</li>
+                        <li>File One</li>
                     </a>
                     <a href="#">
-                        <li>Folder Two</li>
+                        <li>File Two</li>
                     </a>
                     <a href="#">
-                        <li>Folder Three</li>
+                        <li>File Three</li>
                     </a>
                     <a href="#">
-                        <li>Folder Four</li>
+                        <li>File Four</li>
                     </a>
                 </ul>
             </div>
-
-        <div class="file-access col-lg-10 col-xs-10">
-            <div class="files">
-                <h1>Files:</h1>
-                <p></p>
-            </div>
-            <div class="file-preview">
-                    <h1>Preview:</h1>
-                    <p></p>
+        </div>
+        <div class="panel panel-info file-preview col-lg-4">
+            <div class="panel-heading">File Preview:</div>
+            <div class="panel-body">
+                <div class="preview">
+                    <h4>Download File</h4>
+                    <button class="btn btn-lg upload-btn" type="button">Download</button>
                 </div>
-            <div class="comments">
-                <h1>Comments from {{client.ClientContact.Arch.ArchContact.first_name}}:</h1>
+            </div>
+        </div>
+        <div class="panel panel-info project-notes col-lg-4">
+            <div class="panel-heading">Notes</div>
+            <div class="panel-body">
+                <p>Job-Status: waiting for plans to be submitted</p>
             </div>
         </div>
     </div>
 </div>
+<div><a href="/settings">Settings</a></div>
+<script src="js/arch-view.js"></script>
+{{!--
+<div class="folders">
+    <h1>Folders:</h1>
+</div> --}} {{!--
+<div class="comments">
+    <h1>Comments:</h1>
+</div> --}}
