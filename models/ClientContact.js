@@ -17,10 +17,7 @@ module.exports = function (sequelize, DataTypes){
     },
     middle_name: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [1]
-      }
+      allowNull: true
     },
     addr_number: {
       type: DataTypes.INTEGER,

@@ -1,6 +1,10 @@
 let isAuthenticated = require('../../config/middleware/isAuthenticated');
 let db = require('../../models');
 
+var path = require('path');
+var formidable = require('formidable');
+var fs = require('fs');
+
 module.exports = function(app) {
 
 //GET RELEVANT DETAILS (LOGIN), then render PROFILE
@@ -44,12 +48,8 @@ module.exports = function(app) {
       response.json(error);
     });
   });
-};
-var path = require('path');
-var formidable = require('formidable');
-var fs = require('fs');
 
-module.exports = function (app){
+//MIRDANDA'S AWESOME ADVENTURE
   app.post('/upload', function(req, res){
     var form = new formidable.IncomingForm();
     form.multiples = true;
@@ -69,4 +69,4 @@ module.exports = function (app){
 
   form.parse(req);
   });
-}
+};
