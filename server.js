@@ -46,6 +46,6 @@ require('./controllers/arch/arch_controller.js')(app);
 db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {
     console.log('Listening on port: ' + PORT);
-    //require('./config/seeds.js')();
+    require('./config/seeds.js')();
   });
 });
