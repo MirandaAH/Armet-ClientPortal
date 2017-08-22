@@ -4,7 +4,7 @@ let db = require('../../models');
 var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
-var db = require('../../models/index.js')
+
 
 module.exports = function(app) {
 
