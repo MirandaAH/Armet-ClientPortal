@@ -1,0 +1,281 @@
+html {
+  background-color: #342e3a;
+  letter-spacing: 1.5px;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+p {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  word-spacing: 2px;
+}
+
+
+/*Landing Page--------------------------------------*/
+
+.header {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.carousel-inner {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.item {
+  height: 100%;
+}
+
+.item img {
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  opacity: .3;
+}
+
+#one {
+  position: absolute;
+  z-index: 0;
+  background-color: #f28423;
+  color: white;
+  margin-left: 0px;
+}
+
+#two {
+  z-index: 0;
+  background-color: white;
+  color: black;
+  position: absolute;
+  left: 33.33%;
+}
+
+#three {
+  position: absolute;
+  left: 66.66%;
+  z-index: 0;
+  background-color: #872729;
+  color: white;
+}
+
+#armet {}
+
+#davis {}
+
+#newlove {}
+
+.vertical-spacer {
+  position: absolute;
+  height: 100vh;
+  right: 0;
+  width: 10px;
+  background-color: black;
+  z-index: 3;
+}
+
+.panels {
+  height: 100vh;
+  width: 33.33%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.panel-content {
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.panel-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 45px;
+  text-align: center;
+  z-index: 1;
+  font-weight: 600;
+  justify-content: center;
+  align-items: baseline;
+  color: white;
+}
+
+.panel-text {
+  text-align: left;
+  z-index: 3;
+  z-index: 3;
+  color: white;
+  display: none;
+}
+
+
+/*Content---------------------------------------*/
+
+#our-work {
+  padding-top: 50px;
+  border-top: 10px solid black;
+  float: left;
+  height: auto;
+  width: 100%;
+  background-color: white;
+}
+
+.our-work {
+  color: #222;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  flex-wrap: wrap;
+}
+
+.our-work-div {
+  margin: 25px;
+  min-width: 400px;
+  min-height: 400px;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.our-work-div-info {
+  position: absolute;
+  text-align: center;
+  width: 300px;
+  display: none;
+}
+
+.our-work-image {
+  width: 100%;
+  position: initial;
+  margin: auto;
+  justify-content: flex-end;
+  margin-bottom: 0px;
+}
+
+
+/*Clients ------------------------------------------*/
+
+.clients {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 25px;
+}
+
+.clients-logo {
+  width: 200px;
+  margin: 30px;
+  flex-wrap: wrap;
+}
+
+
+/*page-2--------------------------------------*/
+
+.about {
+  padding-bottom: 35px;
+  background-color: white;
+  padding-bottom: 50px;
+}
+
+.architects {
+  background-color: #f28423;
+  padding-bottom: 50px;
+  color: black;
+}
+
+.licenses {
+  background-color: black;
+  color: #9d9d9d;
+  padding-bottom: 50px;
+}
+
+
+/*Contact----------------------------------------*/
+
+.contact {
+  background-color: #222;
+  color: #9d9d9d;
+  padding-bottom: 100px;
+}
+
+.contact-title {
+  margin-bottom: 25px;
+}
+
+.red {
+  color: red;
+}
+
+.form-area {
+  padding: 0px 40px 60px;
+  border-radius: 5px;
+}
+
+
+/*spacer--------------------------------------*/
+
+.spacer {
+  border-top: 5px solid black;
+}
+
+
+/*Navbar--------------------------------------*/
+
+.navbar-fixed-bottom {
+  height: 70px;
+}
+
+.dropdown-menu {
+  background-color: #222;
+  text-align: center;
+}
+
+.dropdown-menu li a {
+  color: #9d9d9d;
+}
+
+.nav-1 {
+  padding-left: 40px;
+}
+
+.nav-2 {}
+
+.dropdown-li {
+  text-align: center;
+}

@@ -1,3 +1,148 @@
-<p>Welcome</p>
-<a href="/login">Login</a><br><br>
-<a href="/signup">Sign Up</a>
+{{!-- <a href="/signup">Sign Up</a> --}}
+<link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+<body>
+    <div class="header">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img class="header-image" src="img/building.png" alt="First slide">
+                </div>
+                <div class="item">
+                    <img class="header-image" src="img/building.png" alt="Second slide">
+                </div>
+                <div class="item">
+                    <img class="header-image" src="img/building.png" alt="Third slide">
+                </div>
+            </div>
+        </div>
+
+        <div id="one" class="panels"></div>
+        <div id="two" class="panels"></div>
+        <div id="three" class="panels"></div>
+
+        <div id="armet" class="col-lg-4 panel-content">
+            <h1 class="panel-title">Armet</h1><br>
+            <div class="vertical-spacer"></div>
+        </div>
+
+        <div id="davis" class="col-lg-4 panel-content">
+            <h1 id="davisTitle" class="panel-title">Davis</h1><br>
+            <div class="vertical-spacer"></div>
+        </div>
+
+        <div id="newlove" class="col-lg-4 panel-content">
+            <div class="panelContent">
+                <h1 class='panel-title'>Newlove</h1><br>
+            </div>
+        </div>
+    </div>
+    <div id="our-work">
+        <h1 style="text-align: center">Our Work</h1>
+        <div class="our-work">
+
+            <div class="our-work-div">
+                <h1 class="our-work-title">Conversions</h1>
+                <div class="our-work-div-info">
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. </p>
+                </div>
+                <img class="our-work-image" src="img/building.png" alt="">
+            </div>
+            <div class="our-work-div">
+                <h1 class="our-work-title">Conversions</h1>
+                <div class="our-work-div-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. </p>
+                </div>
+                <img class="our-work-image" src="img/tokyo.png" alt="">
+            </div>
+            <div class="our-work-div">
+                <h1 class="our-work-title">Conversions</h1>
+                <div class="our-work-div-info">
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. </p>
+                </div>
+                <img class="our-work-image" src="img/sydney.png" alt="">
+            </div>
+            <div class="our-work-div">
+                <h1 class="our-work-title">Conversions</h1>
+                <div class="our-work-div-info">
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. </p>
+                </div>
+                <img class="our-work-image" src="img/sydney.png" alt="">
+            </div>
+        </div>
+        <h1 style="text-align: center">Clients</h1>
+        <div class="clients">
+            <img class="clients-logo" src="img/dkdonuts.jpg" alt="">
+            <img class="clients-logo" src="img/elpolloloco.jpg" alt="">
+            <img class="clients-logo" src="img/habit.jpg" alt="">
+            <img class="clients-logo" src="img/innout.png" alt="">
+            <img class="clients-logo" src="img/dkdonuts.jpg" alt="">
+            <img class="clients-logo" src="img/elpolloloco.jpg" alt="">
+            <img class="clients-logo" src="img/habit.jpg" alt="">
+            <img class="clients-logo" src="img/innout.png" alt="">
+        </div>
+    </div>
+    <div id="contact" class="col-lg-12 contact">
+        <div class="container">
+            <h1 class="contact-title">Contact</h1>
+            <div class="col-lg-6">
+                <div class="form-area">
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
+                            <span class="help-block">
+							</div>
+							<button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form</button>
+						</form>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<iframe width="500" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Armet%20Davis%20Newlove&key=AIzaSyB0d-uvMal6AdDaqdbwBBHEBkz989Gu-ZQ" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-inverse bg-inverse navbar-fixed-bottom">
+			<div class="container">
+				<div class="navbar-header"></div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active nav-1"><a href="#">Logo here</a></li>
+						<li class="nav-1"><a href="#">Our Work</a></li>
+						<li class="nav-1"><a href="#">About</a></li>
+						<li class="nav-1"><a href="#">Architects</a></li>
+						<li class="nav-1"><a href="#">Licenses</a></li>
+						<li class="nav-1"><a href="#">Contact</a></li>
+						<li class="nav-1"><a href="/login">Client Postal Login</a><br><br></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-color/2.1.2/jquery.color.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/javascript.js"></script>
+</body>
