@@ -15,7 +15,9 @@ module.exports = function(app) {
       },
       include: [
         {model: db.ArchContact},
-        {model: db.Client}
+        {model: db.Client,
+          include: [{model: db.ClientContact}]
+        }
       ]
     }).then(function(data) {
       console.log('LETS HAVE A LOOK AT THIS: ' + JSON.stringify(data));
@@ -46,6 +48,18 @@ module.exports = function(app) {
       response.render('arch-interface', hbsObject);
     }).catch(function(error) {
       response.json(error);
+    });
+  });
+
+  //GET INDIVIDUAL CLIENT DETAILS WHEN SELECTED
+  app.get('/getClientData/:id', isAuthenticated, function(request, response) {
+    db.ClientContact.findOne({
+      where: {
+        ClientId: request.params.id
+      },
+      include: [{model: db.Client}]
+    }).then(function(data) {
+      response.json(data);
     });
   });
 

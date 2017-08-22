@@ -9,12 +9,7 @@ module.exports = function(app) {
       where: {
         id: request.user.id
       },
-      include: [
-        {
-        model: db.ClientContact,
-        include: [{model: db.Arch}]
-      }
-      ]
+      include: [{model: db.Arch}]
     }).then(function(data) {
       console.log('LETS HAVE A LOOK AT THIS: ' + JSON.stringify(data));
       let hbsObject = {

@@ -10,18 +10,13 @@
             <div class="panel-heading">Client List:</div>
             <div class="panel-body">
                 <ul>
-                    <a href="#">
-                        <li>Clinet One</li>
-                    </a>
-                    <a href="#">
-                        <li>Client Two</li>
-                    </a>
-                    <a href="#">
-                        <li>Client Three</li>
-                    </a>
-                    <a href="#">
-                        <li>Client Four</li>
-                    </a>
+                  {{#each arch.Clients}}
+                  <li>
+                      <button class="btn btn-link" onClick="getClient({{this.id}})">
+                        {{this.ClientContact.first_name}} {{this.ClientContact.last_name}}
+                      </button>
+                  </li>
+                  {{/each}}
                 </ul>
             </div>
         </div>
@@ -32,10 +27,10 @@
                 </div>
                 <div class="panel-body">
                     <ul>*Client Name slected from list*:
-                        <li>Address: 1010 West Ave. Los Angeles, CA 90000</li>
-                        <li>Point of Contact: Jeremy A. Estheban</li>
-                        <li>Email: blank@blank.com</li>
-                        <li>Phone: 555-555-1234 </li>
+                        <li><strong>Address:</strong> <br><span id="clientAddr">Client Address</span></li>
+                        <!-- <li>Point of Contact: <span id="">???</span></li> -->
+                        <li><strong>Email:</strong> <span id="clientEmail">Client Email</span></li>
+                        <li><strong>Phone:</strong> <span id="clientPhone">Client Phone</span></li>
                     </ul>
                 </div>
             </div>
@@ -64,12 +59,20 @@
     </div>
 </div>
 <div><a href="/settings">Settings</a></div>
-<script src="js/arch-view.js"></script>
-{{!--
-<div class="folders">
-    <h1>Folders:</h1>
-</div> --}} {{!--
-<div class="comments">
-    <h1>Comments:</h1>
-</div> --}}
+<script type="text/javascript">
 
+function getClient(x) {
+  $.ajax({
+    url: '/getClientData/' + x,
+    method: 'GET'
+  }).then(function (response) {
+    $('#clientAddr').html(response.addr_number + ' ' +
+    response.addr_street + ' Apt. ' + response.apt_number + ' <br>' +
+    response.city + ', ' + response.state + ' ' + response.zip_code);
+    $('#clientEmail').html(response.Client.email);
+    $('#clientPhone').html(response.phone_number);
+  }).catch(function (err) {
+    console.error(err);
+  });
+}
+</script>

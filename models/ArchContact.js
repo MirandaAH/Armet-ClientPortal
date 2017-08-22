@@ -65,6 +65,9 @@ module.exports = function (sequelize, DataTypes){
     ArchContact.belongsTo(models.Arch, {
       onDelete: 'CASCADE'
     });
+    // ArchContact.hasMany(models.Client, {
+    //   onDelete: 'CASCADE'
+    // });
   };
 
   return ArchContact;

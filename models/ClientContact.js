@@ -65,9 +65,7 @@ module.exports = function (sequelize, DataTypes){
     ClientContact.belongsTo(models.Client, {
       onDelete: 'CASCADE'
     });
-    ClientContact.belongsTo(models.Arch, {
-      onDelete: 'CASCADE'
-    });
+    // ClientContact.belongsTo(models.ArchContact);
   };
 
   return ClientContact;

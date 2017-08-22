@@ -31,6 +31,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Client.associate = function(models) {
   Client.hasOne(models.ClientContact);
+  Client.belongsTo(models.Arch);
 };
 
   return Client;

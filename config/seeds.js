@@ -32,7 +32,8 @@ function second() {
 function third() {
   db.Client.create({
     email: 'email@email.com',
-    password: 'password'
+    password: 'password',
+    ArchId: 1
   }).then(function() {
     fourth();
   });
@@ -50,7 +51,6 @@ function fourth() {
     city:  'Sydney',
     state:  'CA',
     phone_number:  3333333333,
-    ArchId: 1,
     ClientId: 1
   }).then(function() {
     console.log('success');
