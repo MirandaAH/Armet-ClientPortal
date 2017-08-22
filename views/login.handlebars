@@ -1,14 +1,14 @@
-<div class="video">
-  <video muted autoplay loop src="assets/img/background.mp4" id="video"></video>
-</div>
-<div class="container">
+<link rel="stylesheet" href="css/login-styles.css">
+<div class="wrapper">
+  <div class="img">
+    <img id="background-img" src="img/background.jpg" alt="skyscraper-render">
+  </div>
   <div class="row vertical-offset-100">
     <div class="col-md-4 col-md-offset-4">
       <div class="form panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Please sign in</h3>
         </div>
-        <a href="/">Home</a>
         <div class="panel-body">
           <form action="/api/login" method="POST" accept-charset="UTF-8" role="form">
             <fieldset>
@@ -34,3 +34,4 @@
     </div>
   </div>
 </div>
+<a class="home-link" href="/">Home</a>

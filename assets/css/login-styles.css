@@ -1,22 +1,40 @@
 html,
 body {
+    width: 100vw;
+    height: 100vh;
+    font-size: 1.1em;
+    overflow: hidden;
+
+}
+.wrapper {
+    height: 93vh;
 }
 
-.video {
+.img {
     margin: 0px;
     position: relative;
     z-index: -1;
+    width: 100vw;
+    height: 100%;
 }
 
-#video {
+#background-img {
     position: absolute;
-    opacity: .8;
+    width: 100%;
+    height: 100%;
 }
 
 .form {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 40%;
+    left: 48%;
+    width: 300px;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
+    text-align: center;
+}
+.home-link {
+    position: absolute;
+    left: 30px;
+    bottom: 1%;
 }
