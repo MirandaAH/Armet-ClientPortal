@@ -26,17 +26,18 @@ module.exports = function(app) {
     db.Client.findOne({
       where: {
         id: request.user.id
-      },
-      include: [
-        {
-        model: db.ClientContact,
-        include: [{model: db.Arch,
-                   include: [{model: db.ArchContact,
-                              attributes: ['first_name']
-                            }]
-                 }]
       }
-      ]
+      //,
+      // include: [
+      //   {
+      //   model: db.ClientContact,
+      //   include: [{model: db.Arch,
+      //              include: [{model: db.ArchContact,
+      //                         attributes: ['first_name']
+      //                       }]
+      //            }]
+      // }
+      // ]
     }).then(function(data) {
       console.log('LETS HAVE A LOOK AT THIS: ' + JSON.stringify(data));
       let hbsObject = {
