@@ -22,7 +22,7 @@
                     <div class="bot-tag">
                         <hr>
                         <h4>Add a new Client</h4>
-                        <a href="">*new client link goes here*</a>
+                        <a href="/addClientPage">ADD CLIENT</a>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                     Comments
                 </div>
                 <div class="panel-body fillable comments">
-                   
+
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
 </div>
 <div><a href="/settings">Settings</a></div>
 <script type="text/javascript">
-    function getClient(x) {
+    function getClient(x) { //show client contact info
         $.ajax({
             url: '/getClientData/' + x,
             method: 'GET'
