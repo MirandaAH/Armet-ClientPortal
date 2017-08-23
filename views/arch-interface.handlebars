@@ -6,29 +6,35 @@
         </div>
     </div>
     <div class="panel-body main-body">
-        <div class="panel panel-info client-list col-lg-2">
-            <div class="panel-heading">Client List:</div>
-            <div class="panel-body">
-                <ul>
-                  {{#each arch.Clients}}
-                  <li>
-                      <button class="btn btn-link" onClick="getClient({{this.id}})">
+        <div class="col-lg-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">Client List:</div>
+                <div class="panel-body fillable">
+                    <ul>
+                        {{#each arch.Clients}}
+                        <li>
+                            <button class="btn btn-link" onClick="getClient({{this.id}})">
                         {{this.ClientContact.first_name}} {{this.ClientContact.last_name}}
                       </button>
-                  </li>
-                  {{/each}}
-                </ul>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <div class="bot-tag">
+                        <hr>
+                        <h4>Add a new Client</h4>
+                        <a href="">*new client link goes here*</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="client-overview col-lg-9">
-            <div class="panel panel-info client-info col-lg-5">
+        <div class="col-lg-9">
+            <div class="panel panel-info col-lg-5">
                 <div class="panel-heading">
                     Client Information:
                 </div>
-                <div class="panel-body">
-                    <ul>*Client Name slected from list*:
+                <div class="panel-body fillable left-side">
+                    <ul>
                         <li><strong>Address:</strong> <br><span id="clientAddr">Client Address</span></li>
-                        <!-- <li>Point of Contact: <span id="">???</span></li> -->
                         <li><strong>Email:</strong> <span id="clientEmail">Client Email</span></li>
                         <li><strong>Phone:</strong> <span id="clientPhone">Client Phone</span></li>
                     </ul>
@@ -36,7 +42,7 @@
             </div>
             <div class="panel panel-info files col-lg-6">
                 <div class="panel-heading">Files:</div>
-                <div class="panel-body">
+                <div class="panel-body fillable left-side">
                     <ul>
                         <a href="#">
                             <li>Plans-Set One </li>
@@ -49,10 +55,20 @@
                         </a>
 
                     </ul>
+                    <div class="bot-tag">
+                        <hr>
+                        <h4>Upload File</h4>
+                        <input id="upload-input" type="file" name='uploads[]' multiple='multiple'>
+                    </div>
                 </div>
-                <div class="uploader">
-                    <h4>Upload File</h4>
-                    <input id="upload-input" type="file" name='uploads[]' multiple='multiple'>
+
+            </div>
+            <div class="panel panel-info col-lg-11 comment-section">
+                <div class="panel-heading">
+                    Comments
+                </div>
+                <div class="panel-body fillable comments">
+                   
                 </div>
             </div>
         </div>
@@ -60,19 +76,19 @@
 </div>
 <div><a href="/settings">Settings</a></div>
 <script type="text/javascript">
+    function getClient(x) {
+        $.ajax({
+            url: '/getClientData/' + x,
+            method: 'GET'
+        }).then(function (response) {
+            $('#clientAddr').html(response.addr_number + ' ' +
+                response.addr_street + ' Apt. ' + response.apt_number + ' <br>' +
+                response.city + ', ' + response.state + ' ' + response.zip_code);
+            $('#clientEmail').html(response.Client.email);
+            $('#clientPhone').html(response.phone_number);
+        }).catch(function (err) {
+            console.error(err);
+        });
+    }
 
-function getClient(x) {
-  $.ajax({
-    url: '/getClientData/' + x,
-    method: 'GET'
-  }).then(function (response) {
-    $('#clientAddr').html(response.addr_number + ' ' +
-    response.addr_street + ' Apt. ' + response.apt_number + ' <br>' +
-    response.city + ', ' + response.state + ' ' + response.zip_code);
-    $('#clientEmail').html(response.Client.email);
-    $('#clientPhone').html(response.phone_number);
-  }).catch(function (err) {
-    console.error(err);
-  });
-}
 </script>

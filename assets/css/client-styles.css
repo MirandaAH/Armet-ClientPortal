@@ -41,3 +41,6 @@ html, body {
     border-color: gray;
     color: white;
 }
+.panel-body {
+    height: 70vh;
+}
