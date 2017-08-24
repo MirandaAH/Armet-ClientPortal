@@ -57,15 +57,24 @@ module.exports = function(app) {
         });
 //CLIENT PAGE RENDER
       } else if (request.user.kind === 'client') {
-        db.User.findOne({
-          where: {
-            id: request.user.id,
-            kind: request.user.kind
-          }
-        }).then((data) => {
+        Promise.all([
+          db.User.findOne({
+            where: {
+              id: request.user.id,
+              kind: request.user.kind
+            }
+          }),
+          db.Contact.findOne({
+            where: {
+              UserId: request.user.id
+            }
+          })
+        ])
+        .then((data) => {
           console.log(JSON.stringify(data));
           let hbsObject = {
-            arch: data
+            client: data[0],
+            contact: data[1]
           };
           response.render('client-interface', hbsObject);
         }).catch((error) => {
