@@ -13,7 +13,6 @@ module.exports = function(app) {
       }
     })
     .then((data) => {
-      console.log('THIS IS THE USER DATA ' + data);
       response.redirect(307, '/auth/login');
     })
     .catch((error) => {
@@ -46,7 +45,6 @@ module.exports = function(app) {
         })
       ])
         .then((data) => {
-          console.log('CHECK ALL THIS OUT!!! ' + JSON.stringify(data));
           let hbsObject = {
             arch: data[0],
             contact: data[1]
@@ -71,7 +69,6 @@ module.exports = function(app) {
           })
         ])
         .then((data) => {
-          console.log(JSON.stringify(data));
           let hbsObject = {
             client: data[0],
             contact: data[1]
@@ -82,15 +79,14 @@ module.exports = function(app) {
         });
 //ADMIN PAGE RENDER
       } else if (request.user.kind === 'admin') {
-        db.User.findOne({
-          where: {
-            id: request.user.id,
-            kind: request.user.kind
-          }
-        }).then((data) => {
-          console.log(JSON.stringify(data));
+        Promise.all([
+        db.User.findAll({}),
+        db.Contact.findAll({})
+        ])
+        .then((data) => {
           let hbsObject = {
-            arch: data
+            users: data[0],
+            contacts: data[1]
           };
           response.render('admin-interface', hbsObject);
         }).catch((error) => {
