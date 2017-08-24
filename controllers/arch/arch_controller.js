@@ -1,92 +1,34 @@
 let isAuthenticated = require('../../config/middleware/isAuthenticated');
 let db = require('../../models');
-
-var path = require('path');
-var formidable = require('formidable');
-var fs = require('fs');
+// var path = require('path');
+// var formidable = require('formidable');
+// var fs = require('fs');
 
 module.exports = function(app) {
 
-//GET RELEVANT DETAILS (LOGIN), then render PROFILE
-  app.get('/archlogged', isAuthenticated, function(request, response) {
-    db.Arch.findOne({
-      where: {
-        id: request.user.id
-      },
-      include: [
-        {model: db.ArchContact},
-        {model: db.Client,
-          include: [{model: db.ClientContact}]
-        }
-      ]
-    }).then(function(data) {
-      console.log('LETS HAVE A LOOK AT THIS: ' + JSON.stringify(data));
-      let hbsObject = {
-        arch: data
-      };
-      response.render('arch-interface', hbsObject);
-    }).catch(function(error) {
-      response.json(error);
-    });
-  });
-
-//GET RELEVANT DETAILS (POST-SIGN UP), then render PROFILE
-  app.post('/api/archUser', isAuthenticated, function(request, response) {
-    db.Arch.findOne({
-      where: {
-        id: request.user.id
-      },
-      include: [
-        {model: db.ArchContact},
-        {model: db.Client}
-      ]
-    }).then(function(data) {
-      console.log('LETS HAVE A LOOK AT THIS: ' + JSON.stringify(data));
-      let hbsObject = {
-        arch: data
-      };
-      response.render('arch-interface', hbsObject);
-    }).catch(function(error) {
-      response.json(error);
-    });
-  });
-
-  //GET INDIVIDUAL CLIENT DETAILS WHEN SELECTED
-  app.get('/getClientData/:id', isAuthenticated, function(request, response) {
-    db.ClientContact.findOne({
-      where: {
-        ClientId: request.params.id
-      },
-      include: [{model: db.Client}]
-    }).then(function(data) {
-      response.json(data);
-    });
-  });
-
-  //GO TO ADD CLIENT PAGE
+//Navigate to Add-Client Page
   app.get('/addClientPage', isAuthenticated, function(request, response) {
+    if (request.user.kind !== 'arch') { response.redirect('/logout'); }
     response.render('add-client');
   });
 
-  //ADD A NEW CLIENT (ARCH)
-let clientAddInfo;
-
-  app.post('/addClient', isAuthenticated, function(request, response) {
-    clientAddInfo = request.body;
+//Add new client
+  app.post('/api/addClient', isAuthenticated, function(request, response) {
     Promise.all([
-      db.Client.findAll({
+      db.User.findAll({
         attributes: ['id']
       }),
-      db.Client.create({
+      db.User.create({
         email: request.body.email,
         password: request.body.password,
-        ArchId: request.user.id
+        kind: 'client',
+        assoc: request.user.id
       })
     ])
     .then((data) => {
-      let x = data[0][data[0].length - 1].id + 1;
+      let x = data[0][0].id + 1; //Assumes id value with largest integer is at index 0 and no other larger id values have been deleted
       Promise.all([
-        db.ClientContact.create({
+        db.Contact.create({
           first_name:  request.body.first_name.trim(),
           last_name:  request.body.last_name.trim(),
           middle_name:  request.body.middle_name.trim(),
@@ -97,56 +39,57 @@ let clientAddInfo;
           city:  request.body.city.trim(),
           state:  request.body.state.trim(),
           phone_number:  request.body.phone_number.trim(),
-          ArchId: request.user.id,
-          ClientId: x
+          UserId: x
         })
       ])
       .then((data) => {
-        response.redirect('/archlogged');
+        response.redirect('/completeLogin');
       })
     })
-    .catch(function(error) {
+    .catch((error) => {
     console.log(error);
     });
   });
 
-//GET ID FOR NEW CLIENT
-  function getClientId(email) {
-    db.Client.findOne({
-      where: { email: email }
+//GET CLIENT Contact Info --AND PROBABLY FILES TOO LATER
+  app.get('/getClientData/:id', isAuthenticated, function(request, response) {
+    db.Contact.findOne({
+      where: {
+        UserId: request.params.id
+      },
+      include: [{model: db.User}]
     }).then((data) => {
-      let x = { id: data.id, ArchId: data.ArchId };
-      clientAddId = x;
-    });
-  }
-  function defineInfo(data) {
-    request.body = data;
-  }
+      console.log('THIS IS THE GOODS ' + JSON.stringify(data));
+      response.json(data);
+    })
+  });
+
+//************************************************************
 
 //MIRDANDA'S AWESOME ADVENTURE
-  app.post('/upload', function(req, res){
-    var form = new formidable.IncomingForm();
-    form.multiples = true;
-    form.uploadDir = path.join(__dirname, '/uploads');
-    form.on('file', function(field, file) {
-
-  fs.rename(file.path, path.join(form.uploadDir, file.name));
-  });
-
-  form.on('error', function(err) {
-    console.log('An error has occured: \n' + err);
-  });
-
-  form.on('end', function() {
-    res.end('success');
-  });
-
-  form.parse(req);
-  });
-
+//   app.post('/upload', function(req, res){
+//     var form = new formidable.IncomingForm();
+//     form.multiples = true;
+//     form.uploadDir = path.join(__dirname, '/uploads');
+//     form.on('file', function(field, file) {
+//
+//   fs.rename(file.path, path.join(form.uploadDir, file.name));
+//   });
+//
+//   form.on('error', function(err) {
+//     console.log('An error has occured: \n' + err);
+//   });
+//
+//   form.on('end', function() {
+//     res.end('success');
+//   });
+//
+//   form.parse(req);
+//   });
+//
 };
 
-
+//*********************************************************
 // Promise.all([db.findAll(tableA), db.findAll(tableB)])
 // .then((data) => {
 //    //data[0] is response from tableA find
@@ -154,3 +97,4 @@ let clientAddInfo;
 // })
 
 //SELECT * FROM tableName ORDERBY ASC/DESC LIMIT 1
+//let phone = request.body.phone_number.replace(/[^0-9]+/g, '');

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/arch-styles.css">
 <div class="panel panel-default">
-    <div class="panel-heading">Logged in as: {{arch.ArchContact.first_name}} {{arch.ArchContact.last_name}}
+    <div class="panel-heading">Logged in as: {{contact.first_name}} {{contact.last_name}}
         <div class="options">
             <a href="/logout">Logout</a>
         </div>
@@ -11,10 +11,10 @@
                 <div class="panel-heading">Client List:</div>
                 <div class="panel-body fillable">
                     <ul>
-                        {{#each arch.Clients}}
+                        {{#each arch}}
                         <li>
                             <button class="btn btn-link" onClick="getClient({{this.id}})">
-                        {{this.ClientContact.first_name}} {{this.ClientContact.last_name}}
+                        {{this.Contact.first_name}} {{this.Contact.last_name}}
                       </button>
                         </li>
                         {{/each}}
@@ -84,7 +84,7 @@
             $('#clientAddr').html(response.addr_number + ' ' +
                 response.addr_street + ' Apt. ' + response.apt_number + ' <br>' +
                 response.city + ', ' + response.state + ' ' + response.zip_code);
-            $('#clientEmail').html(response.Client.email);
+            $('#clientEmail').html(response.User.email);
             $('#clientPhone').html(response.phone_number);
         }).catch(function (err) {
             console.error(err);

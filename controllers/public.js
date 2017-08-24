@@ -1,24 +1,31 @@
 module.exports = function(app) {
 
-  app.get('/', function(request, response) { //HOME
+  app.get('/', function(request, response) {
     if (request.user) {
-      response.redirect('/logged');
+      if (request.user.kind === 'arch') {
+        response.redirect('/completeLogin');
+      } else if (request.user.kind === 'client') {
+        response.redirect('/completeLogin');
+      } else if (request.user.kind === 'admin') {
+        response.redirect('/completeLogin');
+      }
+    } else {
+      response.render('index');
     }
-    response.render('index');
   });
 
-  app.get('/login', function(request, response) { //LOGIN PAGE
+  app.get('/login', function(request, response) {
     if (request.user) {
-      response.redirect('/logged');
+      if (request.user.kind === 'arch') {
+        response.redirect('/completeLogin');
+      } else if (request.user.kind === 'client') {
+        response.redirect('/completeLogin');
+      } else if (request.user.kind === 'admin') {
+        response.redirect('/completeLogin');
+      }
+    } else {
+      response.render('login');
     }
-    response.render('login');
-  });
-
-  app.get('/signup', function(request, response) { //SIGN UP PAGE
-    if (request.user) {
-      response.redirect('/logged');
-    }
-    response.render('signup');
   });
 
 };

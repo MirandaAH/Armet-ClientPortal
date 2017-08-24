@@ -3,16 +3,18 @@ let db = require('../models/');
 module.exports = function() {
 
 function first() {
-  db.Arch.create({
-    email: 'email@email.com',
-    password: 'password'
+  db.User.create({
+    email: 'client@email.com',
+    password: 'password',
+    kind: 'client',
+    assoc: 2
   }).then(function() {
     second();
   });
 }
 
 function second() {
-  db.ArchContact.create({
+  db.Contact.create({
     first_name:  'John',
     last_name:  'Doe',
     middle_name:  'J.',
@@ -23,24 +25,24 @@ function second() {
     city:  'Los Angeles',
     state:  'CA',
     phone_number:  5555555555,
-    ArchId: 1
+    UserId: 1
   }).then(function() {
     third();
   });
 }
 
 function third() {
-  db.Client.create({
-    email: 'email@email.com',
+  db.User.create({
+    email: 'arch@email.com',
     password: 'password',
-    ArchId: 1
+    kind: 'arch'
   }).then(function() {
     fourth();
   });
 }
 
 function fourth() {
-  db.ClientContact.create({
+  db.Contact.create({
     first_name:  'Erlich',
     last_name:  'Bachman',
     middle_name:  'E.',
@@ -51,7 +53,17 @@ function fourth() {
     city:  'Sydney',
     state:  'CA',
     phone_number:  3333333333,
-    ClientId: 1
+    UserId: 2
+  }).then(function() {
+    fifth();
+  });
+}
+
+function fifth() {
+  db.User.create({
+    email: 'admin@email.com',
+    password: 'password',
+    kind: 'admin'
   }).then(function() {
     console.log('success');
   });

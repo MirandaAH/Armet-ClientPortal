@@ -4,7 +4,6 @@ const methOver = require('method-override');
 const expHbars = require('express-handlebars');
 const session = require('express-session');
 const passport = require('./config/passport.js');
-const passport2 = require('./config/passport2.js');
 const db = require('./models'); //MODELS
 
 const path = require('path');
@@ -26,7 +25,6 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json'}));
 //express sessions - manage user login sessions
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
-app.use(passport2.initialize());
 app.use(passport.session());
 
 //method override for put/delete
@@ -39,8 +37,7 @@ app.set('view engine', 'handlebars');
 //controllers
 require('./controllers/auth.js')(app);
 require('./controllers/public.js')(app);
-require('./controllers/arch/arch_controller.js')(app);
-require('./controllers/client/client_controller.js')(app);
+//require('./controllers/client/client_controller.js')(app);
 require('./controllers/arch/arch_controller.js')(app);
 
 db.sequelize.sync({force: true}).then(function() {
