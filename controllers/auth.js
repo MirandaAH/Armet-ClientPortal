@@ -13,7 +13,6 @@ module.exports = function(app) {
       }
     })
     .then((data) => {
-      console.log('THIS IS THE USER DATA ' + data);
       response.redirect(307, '/auth/login');
     })
     .catch((error) => {
@@ -46,7 +45,6 @@ module.exports = function(app) {
         })
       ])
         .then((data) => {
-          console.log('CHECK ALL THIS OUT!!! ' + JSON.stringify(data));
           let hbsObject = {
             arch: data[0],
             contact: data[1]
@@ -57,15 +55,23 @@ module.exports = function(app) {
         });
 //CLIENT PAGE RENDER
       } else if (request.user.kind === 'client') {
-        db.User.findOne({
-          where: {
-            id: request.user.id,
-            kind: request.user.kind
-          }
-        }).then((data) => {
-          console.log(JSON.stringify(data));
+        Promise.all([
+          db.User.findOne({
+            where: {
+              id: request.user.id,
+              kind: request.user.kind
+            }
+          }),
+          db.Contact.findOne({
+            where: {
+              UserId: request.user.id
+            }
+          })
+        ])
+        .then((data) => {
           let hbsObject = {
-            arch: data
+            client: data[0],
+            contact: data[1]
           };
           response.render('client-interface', hbsObject);
         }).catch((error) => {
@@ -73,15 +79,14 @@ module.exports = function(app) {
         });
 //ADMIN PAGE RENDER
       } else if (request.user.kind === 'admin') {
-        db.User.findOne({
-          where: {
-            id: request.user.id,
-            kind: request.user.kind
-          }
-        }).then((data) => {
-          console.log(JSON.stringify(data));
+        Promise.all([
+        db.User.findAll({}),
+        db.Contact.findAll({})
+        ])
+        .then((data) => {
           let hbsObject = {
-            arch: data
+            users: data[0],
+            contacts: data[1]
           };
           response.render('admin-interface', hbsObject);
         }).catch((error) => {
