@@ -71,17 +71,29 @@
             url: '/getClientData/' + x,
             method: 'GET'
         }).then(function (response) {
+            console.log(response);
             $('#clientAddr').html(response.addr_number + ' ' +
                 response.addr_street + ' Apt. ' + response.apt_number + ' <br>' +
                 response.city + ', ' + response.state + ' ' + response.zip_code);
             $('#clientEmail').html(response.User.email);
             $('#clientPhone').html(response.phone_number);
-            $('#uploadFiles').append('<input type="file" name="upload" id="uploadInput" value="'+ response.id +'" multiple>'+
-            '<input type="submit" id="uploadBtn" value="Upload">');
-
+            $('#uploadFiles').append('<button class="btn btn-lg upload-btn" type="button">Upload File</button><input id="upload-input" type="file" name="uploads[]" value="'+ response.id+'" multiple="multiple">');
+            let a = response.ArchFiles;
+            for(var i=0; i < a.length; i++){
+              $('#clientFiles').append('<button class="btn btn-default" onClick="getFile('+ response.ArchFiles[i].id +')">' + response.ArchFiles[i].name +'</button>');
+            };
         }).catch(function (err) {
             console.error(err);
         });
+    }
+
+    function getFile(x){
+      $.ajax({
+        url: '/download/' + x,
+        method: 'GET'
+      }).then(function(response){
+        console.log(response);
+      });
     }
 
 </script>

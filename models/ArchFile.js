@@ -3,18 +3,6 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    type: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    size: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    content: {
-      type: DataTypes.BLOB,
-      allowNull: false
     }
   });
   ArchFile.associate = function(models){

@@ -1,9 +1,8 @@
-$('#uploadBtn').on('click', function (){
-    $('#uploadInput').click();
+$('.upload-btn').on('click', function (){
+    $('#upload-input').click();
 });
 
-$('#uploadInput').on('change', function(){
-  var x = $(this).val();
+$('#upload-input').on('change', function(){
 
   var files = $(this).get(0).files;
 
@@ -21,7 +20,7 @@ $('#uploadInput').on('change', function(){
     }
 
     $.ajax({
-      url: '/upload/' + x,
+      url: '/upload',
       type: 'POST',
       data: formData,
       processData: false,
@@ -29,9 +28,7 @@ $('#uploadInput').on('change', function(){
       success: function(data){
           console.log('upload successful!\n' + data);
       }
-    }).then(function(response){
-
-    })
+    });
 
   }
 });

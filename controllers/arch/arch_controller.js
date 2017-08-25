@@ -3,6 +3,7 @@ let db = require('../../models');
 var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
+var request = require('ajax-request');
 
 module.exports = function(app) {
 
@@ -12,7 +13,7 @@ module.exports = function(app) {
         where: {
           UserId: request.params.id
         },
-        include: [{model: db.User}]
+        include: [{model: db.User},{model: db.ArchFile}]
       }).then((data) => {
         console.log('THIS IS THE GOODS ' + JSON.stringify(data));
         response.json(data);
@@ -109,32 +110,36 @@ module.exports = function(app) {
   });
 
 //MIRDANDA'S AWESOME ADVENTURE
-  app.post('/upload/:id', isAuthenticated, function(req, res){
+  app.post('/upload', function(req, res){
+    let x = $('#upload-input').val();
 
     var form = new formidable.IncomingForm();
-    form.parse(req);
     form.multiples = true;
-    var id = req.params.id;
-    form.on('file', function(name, file){
+
+    form.uploadDir = path.join(__dirname, '/uploads');
+
+    form.on('file', function(name, file) {
       db.ArchFile.create({
-        name: file.name,
-        type: file.type,
-        size: file.size,
-        content: file.path,
-        ContactId: id
-      }).then(function(data){
-        console.log('LOOOOOK Here!!' + JSON.stringify(data));
-        res.json(data);
-      });
+        name: name,
+        ContactId: x
+      }).then((data) => {
+        response.redirect('/completeLogin');
+      })
     });
 
     form.on('error', function(err) {
       console.log('An error has occured: \n' + err);
     });
+
     form.on('end', function() {
       res.end('success');
     });
+
+    form.parse(req);
+
   });
+
+
 }
 
 //*********************************************************

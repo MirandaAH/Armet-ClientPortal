@@ -11,18 +11,7 @@
             <div class="panel-heading">File List:</div>
             <div class="panel-body file-list-body">
                 <ul>
-                    <a href="#">
-                        <li>File One</li>
-                    </a>
-                    <a href="#">
-                        <li>File Two</li>
-                    </a>
-                    <a href="#">
-                        <li>File Three</li>
-                    </a>
-                    <a href="#">
-                        <li>File Four</li>
-                    </a>
+                    
                 </ul>
             </div>
         </div>
@@ -66,3 +55,16 @@
 <div class="comments">
     <h1>Comments:</h1>
 </div> --}}
+<script type="text/javascript">
+function getFile(x){
+  $.ajax({
+    url: '/download',
+    method: 'GET'
+  }).then(function(response){
+    console.log(response);
+  });
+}
+
+
+
+</script>
