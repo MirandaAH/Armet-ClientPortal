@@ -1,80 +1,123 @@
 <link rel="stylesheet" href="css/arch-styles.css">
-<div class="panel panel-default">
+<div class="panel panel-default" style="width: 100%">
     <div class="panel-heading">Logged in as: {{contact.first_name}} {{contact.last_name}}
-        <div class="options">
-            <a href="/logout">Logout</a>
-        </div>
     </div>
     <div class="panel-body main-body">
-        <div class="col-lg-2">
-            <div class="panel panel-info">
-                <div class="panel-heading">Client List:</div>
-                <div class="panel-body fillable">
-                    <ul>
-                        {{#each arch}}
-                        <li>
-                            <button class="btn btn-link" onClick="getClient({{this.id}})">
-                        {{this.Contact.first_name}} {{this.Contact.last_name}}
-                      </button>
-                        </li>
-                        {{/each}}
-                    </ul>
-                    <div class="bot-tag">
-                        <hr>
-                        <h4>Add a new Client</h4>
-                        <a href="/addClientPage">ADD CLIENT</a>
+        <div class="row">
+            <div class="col-lg-3 col-xs-3">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Client List:</div>
+                    <div class="panel-body fillable">
+                        <table class="table table-hover">
+                            <tbody>
+                                {{#each arch}}
+                                <tr>
+                                    <td>
+                                        <a onClick="getClient({{this.id}})">
+                                            <li>
+                                                {{this.Contact.first_name}} {{this.Contact.last_name}}
+                                            </li>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        <div class="bot-tag">
+                            <hr>
+                            <h4>Add a new Client</h4>
+                            <a href="/addClientPage">Add Client</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-9">
-            <div class="panel panel-info col-lg-5">
-                <div class="panel-heading">
-                    Client Information:
-                </div>
-                <div class="panel-body fillable left-side">
-                    <ul>
-                        <li><strong>Address:</strong> <br><span id="clientAddr">Client Address</span></li>
-                        <li><strong>Email:</strong> <span id="clientEmail">Client Email</span></li>
-                        <li><strong>Phone:</strong> <span id="clientPhone">Client Phone</span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="panel panel-info files col-lg-6">
-                <div class="panel-heading">Files:</div>
-                <div class="panel-body fillable left-side">
-                    <ul>
-                        <a href="#">
-                            <li>Plans-Set One </li>
-                        </a>
-                        <a href="#">
-                            <li>Services Contracts</li>
-                        </a>
-                        <a href="#">
-                            <li>Billing Spreadhseet</li>
-                        </a>
-
-                    </ul>
-                    <div class="bot-tag">
-                        <hr>
-                        <h4>Upload File</h4>
-                        <input id="upload-input" type="file" name='uploads[]' multiple='multiple'>
+            <div class="col-lg-9 col-xs-9">
+                <div class="col-lg-6 col-xs-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Client Information:
+                        </div>
+                        <div class="panel-body fillable left-side">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td>Address:</td>
+                                        <td id="clientAddr"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone:</td>
+                                        <td id="clientEmail"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email:</td>
+                                        <td id="clientPhone"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+                <div class="col-lg-6 col-xs-6">
+                    <div class="panel panel-info files">
+                        <div class="panel-heading">Files:</div>
+                        <div class="panel-body fillable left-side">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>File Name</td>
+                                        </tr>
+                                    </tbody>
+                            </table>
+                            <div class="bot-tag">
+                                <hr>
+                                <h4>Upload File</h4>
+                                <input id="upload-input" type="file" name='uploads[]' multiple='multiple'>
+                            </div>
+                        </div>
 
-            </div>
-            <div class="panel panel-info col-lg-11 comment-section">
-                <div class="panel-heading">
-                    Comments
+                    </div>
                 </div>
-                <div class="panel-body fillable comments">
-
+                <div class="col-lg-12 col-xs-12">
+                    <div class="panel panel-info comment-section">
+                        <div class="panel-heading">
+                            Comments
+                        </div>
+                        <div class="panel-body fillable comments">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>File Name</th>
+                                        <th>Client</th>
+                                        <th>Date</th>
+                                        <th>Comment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>File Name*</td>
+                                        <td>Client*</td>
+                                        <td>Date*</td>
+                                        <td>Comment*</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div><a href="/archSettings">Settings</a></div>
+<div class="container-fluid" style="padding: 0; margin: 0;">
+    <div class="row" style="padding:0; margin:0; width: 100%; background-color: #D9EDF7;">
+        <div class="col-sm-12 text-center" style="padding: 5px 0; background-color: #9A4F4F;">
+            <a href="/logout"><button class="btn btn-danger btn-sm">Logout</button></a>
+            <a href="/archSettings"><button class="btn btn-danger btn-sm">Settings</button></a>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
     function getClient(x) { //show client contact info
         $.ajax({

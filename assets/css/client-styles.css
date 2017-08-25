@@ -15,15 +15,14 @@ html, body {
 .col-lg-3,
 .col-lg-2,
 .col-lg-1 {
-    margin: 5px;
     padding: 0px;
 }
 .col-lg-11 {
     margin: 0px;
     margin-bottom: 5px;
 }
-.options {
-    float: right;
+.panel {
+    width: 97%;
 }
 .panel-default {
     height: 90vh;
@@ -31,7 +30,7 @@ html, body {
 .main-body {
     padding: 5px;
 }
-.panel-heading {
+.panel-heading {    
     width: 100%;
     font-size: 1.5em;
 }
@@ -39,22 +38,30 @@ html, body {
     border-color: black;
 }
 .panel-info > .panel-heading {
-    background-color: gray;
-    border-color: gray;
+    background-color: #87A9A4;
+    border-color: #87A9A4;
     color: white;
 }
 .panel-body {
     padding: 2px;
 }
 .file-list-body {
-    height: 70vh;
+    min-height: 50vh;
 }
 .notes {
-    height: 30vh;
+    min-height: 30vh;
 }
 .file-comments {
-    height: 30vh;
+    min-height: 30vh;
 }
 .btn {
     margin: 5px;
+}
+a:hover {
+    cursor: pointer;
+}
+.form-group {
+    margin: auto;
+    margin-top: 10px;
+    width: 90%;
 }

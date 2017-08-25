@@ -1,8 +1,8 @@
 html,
 body {
     margin: 0px auto;
-    height: 100vh;
     width: 100vw;
+    height: 100vh;
 }
 .col-lg-12, 
 .col-lg-11,
@@ -16,8 +16,9 @@ body {
 .col-lg-3,
 .col-lg-2,
 .col-lg-1 {
-    margin: 5px;
+    position: relative;
     padding: 0px;
+    margin: 0px;
 }
 .col-lg-9 {
     margin: 0px;
@@ -25,18 +26,23 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+
 }
 .options {
     float: right;
 }
+.panel {
+    width: 97%;
+}
 .panel-default {
-    height: 90vh;
+    
 }
 .main-body {
-    height: 100%;
+    height: 95vh;
+    overflow: scroll;
 }
 .panel-heading {
-    width: 100%;
+    /* width: 100%; */
     font-size: 1.2em;
 }
 .panel-info {
@@ -44,34 +50,28 @@ body {
     height: 100%;
 }
 .panel-info > .panel-heading {
-    background-color: gray;
-    border-color: gray;
+    background-color: #9A4F4F;
+    border-color: #9A4F4F;
     color: white;
 }
 .panel-body {
-    height: 70vh;
+    position: relative;
+    min-height: 250px;
+    height: 100%;
 }
 .bot-tag {
     position: absolute;
-    bottom: 20px;
-    margin: auto;
-    padding-bottom: 10px;
+    bottom: 5px;
+    margin-top: 10px;
 }
 .left-side {
     height: 40vh;
     
 }
-.comment-section {
-    margin: 0px auto;
-}
-.comments {
-    height: 100%;
-    
-}
-li {
-    list-style: ;
-}
 .fillable {
     overflow: scroll;
     
+}
+a:hover {
+    cursor: pointer;
 }

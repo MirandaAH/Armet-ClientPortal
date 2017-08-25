@@ -1,0 +1,8 @@
+.panel-info > .panel-heading {
+    background-color: #282727;
+    border-color: #282727;
+    color: white;
+}
+.panel-info {
+    border-color: black;
+}
