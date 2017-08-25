@@ -28,17 +28,12 @@ body {
     justify-content: center;
 
 }
-.options {
-    float: right;
-}
 .panel {
     width: 97%;
 }
-.panel-default {
-    
-}
+
 .main-body {
-    height: 95vh;
+    height: 97vh;
     overflow: scroll;
 }
 .panel-heading {
@@ -64,13 +59,8 @@ body {
     bottom: 5px;
     margin-top: 10px;
 }
-.left-side {
-    height: 40vh;
-    
-}
 .fillable {
-    overflow: scroll;
-    
+    overflow: scroll; 
 }
 a:hover {
     cursor: pointer;
