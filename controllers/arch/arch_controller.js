@@ -1,8 +1,10 @@
 let isAuthenticated = require('../../config/middleware/isAuthenticated');
 let db = require('../../models');
-var path = require('path');
+
+//var path = require('path');
 var formidable = require('formidable');
-var fs = require('fs');
+
+//var fs = require('fs');
 
 module.exports = function(app) {
 
@@ -48,6 +50,7 @@ module.exports = function(app) {
 
 //Add new client
   app.post('/api/addClient', isAuthenticated, function(request, response) {
+    if (request.user.kind !== 'arch') { response.redirect('/logout'); }
     Promise.all([
       db.User.findAll({
         attributes: ['id']
