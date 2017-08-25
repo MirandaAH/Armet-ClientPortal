@@ -9,7 +9,7 @@
     <div class="panel-body main-body">
         <div class="panel panel-info file-list col-lg-3">
             <div class="panel-heading">File List:</div>
-            <div class="panel-body">
+            <div class="panel-body file-list-body">
                 <ul>
                     <a href="#">
                         <li>File One</li>
@@ -28,18 +28,32 @@
         </div>
         <div class="panel panel-info file-preview col-lg-4">
             <div class="panel-heading">File Preview:</div>
-            <div class="panel-body">
+            <div class="panel-body ">
                 <div class="preview">
                     <h4>Download File</h4>
-                    <button class="btn btn-lg upload-btn" type="button">Download</button>
+                    <button class="btn btn-md download-btn" type="button">Download</button>
                 </div>
             </div>
         </div>
-        <div class="panel panel-info project-notes col-lg-4">
-            <div class="panel-heading">Notes</div>
-            <div class="panel-body">
-                <p>Job-Status: waiting for plans to be submitted</p>
+        <div class="col-lg-4">
+             <div class="col-lg-11 panel panel-info  ">
+                <div class="panel-heading">Add Comment:</div>
+                <div class="panel-body file-comments">
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                         <button class="btn btn-md" type="button">Submit</button>
+                    </div>
+                </div>
             </div>
+            <div class="col-lg-11 panel panel-info">
+                <div class="panel-heading">Responses</div>
+                <div class="panel-body notes">
+                    <p>Job-Status: waiting for plans to be submitted</p>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>

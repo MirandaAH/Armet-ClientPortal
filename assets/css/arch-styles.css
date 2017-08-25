@@ -4,20 +4,27 @@ body {
     height: 100vh;
     width: 100vw;
 }
-.col-lg-12, 
+.col-lg-12,
 .col-lg-11,
 .col-lg-10,
 .col-lg-9,
-.col-lg-8, 
+.col-lg-8,
 .col-lg-7,
 .col-lg-6,
 .col-lg-5,
-.col-lg-4, 
+.col-lg-4,
 .col-lg-3,
 .col-lg-2,
 .col-lg-1 {
     margin: 5px;
     padding: 0px;
+}
+.col-lg-9 {
+    margin: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 .options {
     float: right;
@@ -26,33 +33,49 @@ body {
     height: 90vh;
 }
 .main-body {
-    padding: 5px;
     height: 100%;
 }
 .panel-heading {
     width: 100%;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 .panel-info {
     border-color: black;
+    height: 100%;
 }
 .panel-info > .panel-heading {
     background-color: gray;
     border-color: gray;
     color: white;
 }
-.uploader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
+.panel-body {
+    height: 70vh;
+}
+.bot-tag {
+    position: absolute;
+    bottom: 20px;
+    margin: auto;
+    padding-bottom: 10px;
+}
+.left-side {
+    height: 40vh;
+
+}
+.comment-section {
+    margin: 0px auto;
+}
+.comments {
+    height: 100%;
+
+}
+li {
+    list-style: ;
+}
+.fillable {
+    overflow: scroll;
 }
 
-#upload-input {
-  
-}
 
-/* .comments {
-    width: 100%;
-    height: 35%;
-} */
+#upload-input{
+  display: none;
+}

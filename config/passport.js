@@ -10,9 +10,9 @@ passport.use(new LocalStrategy(
     usernameField: "email"
   },
   function(email, password, done) {
-    console.log('Arch-login');
+    console.log('User-login');
     // When a user tries to sign in this code runs
-    db.Arch.findOne({
+    db.User.findOne({
       where: {
         email: email
       }

@@ -8,6 +8,7 @@ body {
 }
 .wrapper {
     height: 93vh;
+    margin-top: 4%;
 }
 
 .img {
@@ -37,5 +38,5 @@ body {
 .home-link {
     position: absolute;
     left: 30px;
-    bottom: 1%;
+    top: 1%;
 }
