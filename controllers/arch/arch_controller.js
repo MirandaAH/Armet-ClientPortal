@@ -10,12 +10,20 @@ module.exports = function(app) {
 
   //GET CLIENT Contact Info --AND PROBABLY FILES TOO LATER
     app.get('/getClientData/:id', isAuthenticated, function(request, response) {
-      db.Contact.findOne({
-        where: {
-          UserId: request.params.id
-        },
-        include: [{model: db.User}]
-      }).then((data) => {
+      Promise.all([
+        db.Contact.findOne({
+          where: {
+            UserId: request.params.id
+          },
+          include: [{model: db.User}]
+        }),
+        db.Docs.findAll({
+          where: {
+            UserId: request.params.id
+          }
+        })
+      ])
+      .then((data) => {
         console.log('THIS IS THE GOODS ' + JSON.stringify(data));
         response.json(data);
       })

@@ -1,32 +1,41 @@
 const formidable = require('formidable');
-const isAuthenticated = require('../../config/middleware/isAuthenticated');
-//let db = require('../../models');
+const isAuthenticated = require('../config/middleware/isAuthenticated');
+const fs = require('fs');
+const path = require('path');
+let db = require('../models');
 
 module.exports = function(app) {
 
   app.post('/fileUpload', isAuthenticated, function(request, response) {
     if (request.user.kind !== 'arch') { response.redirect('/logout'); }
-    
+
+      let form = new formidable.IncomingForm();
+      form.multiples = true;
+      form.on('error', function(error) { console.log('An error has occured: \n' + error); });
+      form.parse(request, function(error, fields, files) {
+        form.uploadDir = path.join(__dirname, '/arch/uploads')
+        let oldPath = files.filetoupload.path; //uploaded file path
+        let oldName = files.filetoupload.name; //uploaded file name
+        let extension = oldName.slice((Math.max(0, oldName.lastIndexOf(".")) || Infinity) + 1); //file extension
+        let newPath = form.uploadDir + '/' + fields.client + request.user.id + Math.floor(Math.random() * 99e9) + '.' + extension; //new path --needs to be improved (potentially not unique)
+        fs.rename(oldPath, newPath, function(error) {
+          if (error) { console.log(error); throw error; }
+          createDoc(newPath, extension, fields.client);
+          console.log('File uploaded');
+        });
+      });
+
+      function createDoc(path, extension, client) {
+            db.Docs.create({
+              path: path,
+              fileType: extension,
+              UserId: client
+            }).then((data) => {
+            response.redirect('/completeLogin');
+          });
+      }
+
+
   });
 
 };
-
-app.post('/upload', function(req, res){
-  var form = new formidable.IncomingForm();
-  form.multiples = true;
-  form.uploadDir = path.join(__dirname, '/uploads');
-  form.on('file', function(field, file) {
-
-fs.rename(file.path, path.join(form.uploadDir, file.name));
-});
-
-form.on('error', function(err) {
-  console.log('An error has occured: \n' + err);
-});
-
-form.on('end', function() {
-  res.end('success');
-});
-
-form.parse(req);
-});

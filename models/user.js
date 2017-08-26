@@ -41,6 +41,7 @@ module.exports = function(sequelize, DataTypes) {
 
   User.associate = function(models) {
     User.hasOne(models.Contact);
+    User.hasMany(models.Docs);
   };
 
   return User;

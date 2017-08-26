@@ -63,8 +63,8 @@
                         <div class="panel-heading">Files:</div>
                         <div class="panel-body fillable left-side">
                             <table class="table table-hover">
-                                <thead>
-                                    <tbody>
+                                <thead></thead>
+                                    <tbody id="userDocs">
                                         <tr>
                                             <td>File Name</td>
                                         </tr>
@@ -73,7 +73,13 @@
                             <div class="bot-tag">
                                 <hr>
                                 <h4>Upload File</h4>
-                                <input id="upload-input" type="file" name='uploads[]' multiple='multiple'>
+                                <form action="/fileUpload" method="POST" enctype="multipart/form-data">
+                                      {{#each arch}}
+                                        <input type="radio" name="client" value="{{this.id}}">{{this.Contact.first_name}} {{this.Contact.last_name}}<br>
+                                      {{/each}}
+                                  <input type="file" name="filetoupload"><br>
+                                  <input type="submit">
+                                </form>
                             </div>
                         </div>
 
@@ -124,11 +130,17 @@
             url: '/getClientData/' + x,
             method: 'GET'
         }).then(function (response) {
-            $('#clientAddr').html(response.addr_number + ' ' +
-                response.addr_street + ' Apt. ' + response.apt_number + ' <br>' +
-                response.city + ', ' + response.state + ' ' + response.zip_code);
-            $('#clientEmail').html(response.User.email);
-            $('#clientPhone').html(response.phone_number);
+            $('#clientAddr').html(response[0].addr_number + ' ' +
+                response[0].addr_street + ' Apt. ' + response[0].apt_number + ' <br>' +
+                response[0].city + ', ' + response[0].state + ' ' + response[0].zip_code);
+            $('#clientEmail').html(response[0].User.email);
+            $('#clientPhone').html(response[0].phone_number);
+
+            for (let i = 0; i < response[1].length; i ++) {
+              let readableName = response[1][i].path.slice(response[1][i].path.lastIndexOf("/") + 1, response[1][i].path.length);
+              $('#userDocs').append('<tr><td>' + readableName + '</td></tr>');
+            }
+
         }).catch(function (err) {
             console.error(err);
         });

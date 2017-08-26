@@ -40,6 +40,7 @@ require('./controllers/public.js')(app);
 require('./controllers/client/client_controller.js')(app);
 require('./controllers/arch/arch_controller.js')(app);
 require('./controllers/admin/admin_controller.js')(app);
+require('./controllers/upform.js')(app);
 
 db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {
