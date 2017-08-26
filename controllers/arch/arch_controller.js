@@ -1,11 +1,6 @@
 let isAuthenticated = require('../../config/middleware/isAuthenticated');
 let db = require('../../models');
 
-//var path = require('path');
-var formidable = require('formidable');
-
-//var fs = require('fs');
-
 module.exports = function(app) {
 
   //GET CLIENT Contact Info --AND PROBABLY FILES TOO LATER
@@ -24,7 +19,6 @@ module.exports = function(app) {
         })
       ])
       .then((data) => {
-        console.log('THIS IS THE GOODS ' + JSON.stringify(data));
         response.json(data);
       })
     });
@@ -45,7 +39,6 @@ module.exports = function(app) {
         }
       })
     ]).then((data) => {
-      console.log(JSON.stringify(data));
       let hbsObject = {
         contact: data[0]
       };
@@ -117,29 +110,6 @@ module.exports = function(app) {
     }).catch((error) => {
       console.log(error);
     });
-  });
-
-//************************************************************
-
-//MIRDANDA'S AWESOME ADVENTURE
-  app.post('/upload', function(req, res){
-    var form = new formidable.IncomingForm();
-    form.multiples = true;
-    form.uploadDir = path.join(__dirname, '/uploads');
-    form.on('file', function(field, file) {
-
-  fs.rename(file.path, path.join(form.uploadDir, file.name));
-  });
-
-  form.on('error', function(err) {
-    console.log('An error has occured: \n' + err);
-  });
-
-  form.on('end', function() {
-    res.end('success');
-  });
-
-  form.parse(req);
   });
 
 };

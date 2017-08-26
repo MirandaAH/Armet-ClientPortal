@@ -13,7 +13,7 @@ module.exports = function(app) {
       form.multiples = true;
       form.on('error', function(error) { console.log('An error has occured: \n' + error); });
       form.parse(request, function(error, fields, files) {
-        form.uploadDir = path.join(__dirname, '/arch/uploads')
+        form.uploadDir = path.join(__dirname, '/../uploads')
         let oldPath = files.filetoupload.path; //uploaded file path
         let oldName = files.filetoupload.name; //uploaded file name
         let extension = oldName.slice((Math.max(0, oldName.lastIndexOf(".")) || Infinity) + 1); //file extension
@@ -37,7 +37,7 @@ module.exports = function(app) {
   });
 
   app.get('/download/:fileName', isAuthenticated, function(request, response) {
-    response.download('controllers/arch/uploads/' + request.params.fileName);
+    response.download('uploads/' + request.params.fileName);
   });
 
 };
