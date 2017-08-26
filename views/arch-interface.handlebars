@@ -234,12 +234,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {{#each files}}
+                                  {{#with comment}}
                                     <tr>
-                                        <td>File Name*</td>
-                                        <td>Client*</td>
-                                        <td>Date*</td>
-                                        <td>Comment*</td>
+                                        <td>{{this.path}}</td>
+                                        <td>Client</td>
+                                        <td>{{this.createdAt}}</td>
+                                        <td>{{this.comment}}</td>
                                     </tr>
+                                  {{/with}}
+                                {{/each}}
                                 </tbody>
                             </table>
                         </div>
