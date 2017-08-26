@@ -1,4 +1,22 @@
 <link rel="stylesheet" href="css/arch-styles.css">
+<script>
+function selectFile (x){
+  $('#comment-btn').val(x);
+  console.log('value changed' + $('#comment-btn').val());
+};
+
+$('#comment-btn').on('click', function comment(){
+  console.log('you got here, bud');
+  let x = $('#comment-btn').val();
+    $.ajax({
+      url: '/comment/' + x,
+      method: 'POST'
+    }).then(function(response) {
+      console.log('success!')
+    });
+  });
+
+</script>
 <div class="container-fluid text-center" style="padding:10px 0; margin:0 0 30px 0; width: 100%; background-color: #F5F5F5;">Logged in as: {{contact.first_name}} {{contact.last_name}}</div>
 <div class="container">
   <div class="row">
@@ -19,7 +37,7 @@
               <tbody>
                 {{#each files}}
                   <tr>
-                    <td><a href="#">{{this.path}}</a></td>
+                    <td><button class="btn btn-default" onClick="selectFile({{this.id}})">{{this.path}}</a></td>
                     <td>{{this.createdAt}}</td>
                   </tr>
                 {{/each}}
@@ -41,7 +59,7 @@
               <textarea class="form-control" rows="5" id="comment"></textarea>
             </div>
             <div class="form-group text-center">
-              <button class="btn btn-md" type="button">Submit</button>
+              <button class="btn btn-md" id="comment-btn" type="button">Submit</button>
             </div>
             </form>
           </div>
@@ -193,19 +211,3 @@
     </div>
 </div>
 <script src="js/arch-view.js"></script> -->
-<script>
-function selectFile (x){
-  $('comment-btn').val(x);
-});
-
-function comment(){
-  let x = $('#comment-btn').val();
-    $.ajax({
-      url: '/comment/' + x,
-      method: 'POST'
-    }).then(function(response) {
-      response.redirect('/completeLogin');
-    });
-  }
-
-</script>
