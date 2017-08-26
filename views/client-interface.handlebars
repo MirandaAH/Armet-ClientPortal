@@ -12,16 +12,16 @@
                             <thead>
                                 <tr>
                                     <th>File Name</th>
-                                    <th>Architect</th>
-                                    <th>Last Updated</th>
+                                    <th>Date Uploaded</th>
                                 </tr>
                             </thead>
                             <tbody>
+                              {{#each files}}
                                 <tr>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>john@example.com</td>
+                                    <td>{{this.path}}</td>
+                                    <td>{{this.createdAt}}</td>
                                 </tr>
+                              {{/each}}
                             </tbody>
                         </table>
                     </div>

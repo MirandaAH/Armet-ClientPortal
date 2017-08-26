@@ -64,20 +64,30 @@
                         <div class="panel-body fillable left-side">
                             <table class="table table-hover">
                                 <thead></thead>
-                                    <tbody id="userDocs">
-                                        <tr>
-                                            <td>File Name</td>
-                                        </tr>
-                                    </tbody>
+                                  <tbody id="userDocs">
+                                    <tr>
+                                      <td>File Name</td>
+                                      <td>Date Uploaded</td>
+                                    </tr>
+                                    {{#each files}}
+                                      <tr>
+                                          <td>{{this.path}}</td>
+                                          <td>{{this.createdAt}}</td>
+                                      </tr>
+                                    {{/each}}
+                                  </tbody>
+
                             </table>
                             <div class="bot-tag">
                                 <hr>
                                 <h4>Upload File</h4>
                                 <form action="/fileUpload" method="POST" enctype="multipart/form-data">
                                       {{#each arch}}
-                                        <input type="radio" name="client" value="{{this.id}}">{{this.Contact.first_name}} {{this.Contact.last_name}}<br>
+                                        <input type="radio" name="client" value="{{this.id}}"> {{this.Contact.first_name}} {{this.Contact.last_name}}<br>
                                       {{/each}}
+                                  <br>
                                   <input style="width: 100%;" type="text" name="fileName" placeholder="File Name(no spaces or special characters)">
+                                  <br>
                                   <input type="file" name="filetoupload"><br>
                                   <input type="submit">
                                 </form>

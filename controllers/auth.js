@@ -42,12 +42,18 @@ module.exports = function(app) {
           where: {
             UserId: request.user.id
           }
+        }),
+        db.Docs.findAll({
+          where: {
+            UserId: request.user.id
+          }
         })
       ])
         .then((data) => {
           let hbsObject = {
             arch: data[0],
-            contact: data[1]
+            contact: data[1],
+            files: data[2]
           };
           response.render('arch-interface', hbsObject);
         }).catch((error) => {
@@ -66,12 +72,18 @@ module.exports = function(app) {
             where: {
               UserId: request.user.id
             }
+          }),
+          db.Docs.findAll({
+            where: {
+              UserId: request.user.id
+            }
           })
         ])
         .then((data) => {
           let hbsObject = {
             client: data[0],
-            contact: data[1]
+            contact: data[1],
+            files: data[2]
           };
           response.render('client-interface', hbsObject);
         }).catch((error) => {
