@@ -131,6 +131,7 @@
             url: '/getClientData/' + x,
             method: 'GET'
         }).then(function (response) {
+            $('#userDocs').html('<tr><td>File Name</td></tr>');
             $('#clientAddr').html(response[0].addr_number + ' ' +
                 response[0].addr_street + ' Apt. ' + response[0].apt_number + ' <br>' +
                 response[0].city + ', ' + response[0].state + ' ' + response[0].zip_code);
