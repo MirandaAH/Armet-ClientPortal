@@ -77,7 +77,7 @@
                                       {{#each arch}}
                                         <input type="radio" name="client" value="{{this.id}}">{{this.Contact.first_name}} {{this.Contact.last_name}}<br>
                                       {{/each}}
-                                  <input type="text" name="fileName" placeholder="File Name (no spaces, or special characters)">
+                                  <input style="width: 100%;" type="text" name="fileName" placeholder="File Name (no spaces, or special characters)">
                                   <input type="file" name="filetoupload"><br>
                                   <input type="submit">
                                 </form>
@@ -139,7 +139,8 @@
 
             for (let i = 0; i < response[1].length; i ++) {
               let readableName = response[1][i].path.slice(response[1][i].path.lastIndexOf("/") + 1, response[1][i].path.length);
-              $('#userDocs').append('<tr><td>' + readableName + '</td></tr>');
+              $('#userDocs').append('<tr><td><a href="/download/' + readableName +
+              '" style="position: relative; left: -20px;">' + readableName + '</a></td></tr>');
             }
 
         }).catch(function (err) {

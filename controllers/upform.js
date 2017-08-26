@@ -20,7 +20,7 @@ module.exports = function(app) {
         let newPath = form.uploadDir + '/' + fields.fileName + '.' + extension; //new path --needs to be improved (potentially not unique)
         fs.rename(oldPath, newPath, function(error) {
           if (error) { console.log(error); throw error; }
-          createDoc(newPath, extension, fields.client);
+          createDoc(fields.fileName + '.' + extension, extension, fields.client);
           console.log('File uploaded');
         });
       });
@@ -34,8 +34,10 @@ module.exports = function(app) {
             response.redirect('/completeLogin');
           });
       }
+  });
 
-
+  app.get('/download/:fileName', isAuthenticated, function(request, response) {
+    response.download('controllers/arch/uploads/' + request.params.fileName);
   });
 
 };
