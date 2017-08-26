@@ -152,7 +152,7 @@
                         <div class="panel-body file-comments">
                             <div class="form-group">
                                 <textarea class="form-control" rows="5" id="comment"></textarea>
-                                <button class="btn btn-md" type="button" id="comment-btn" value="{{this.id}}">Submit</button>
+                                <button class="btn btn-md" type="button" id="comment-btn" onClick="comment()">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -198,7 +198,8 @@ function selectFile (x){
   $('comment-btn').val(x);
 });
 
-function comment(x){
+function comment(){
+  let x = $('#comment-btn').val();
     $.ajax({
       url: '/comment/' + x,
       method: 'POST'
