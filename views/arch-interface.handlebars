@@ -7,7 +7,7 @@
         <div class="panel-heading text-center">
           Client List:
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="min-height: 300px;">
           <div class="list-group text-center">
             {{#each arch}}
               <a href="#" onclick="getClient({{this.id}})" class="list-group-item">{{this.Contact.first_name}} {{this.Contact.last_name}}</a>
@@ -22,7 +22,7 @@
         <div class="panel-heading text-center">
           Client Contact Information:
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="min-height: 300px;">
           <div class="list-group text-center">
             <a href="#" class="list-group-item">
               <strong>ADDRESS:</strong><br><br>
@@ -39,6 +39,7 @@
           </div>
         </div>
         <div class="panel-footer text-center">
+          <span style="visibility: hidden;"> Add Client</span>
         </div>
       </div>
     </div>
@@ -47,7 +48,7 @@
         <div class="panel-heading text-center">
           File Upload:
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="min-height: 300px;">
           <div id="userDocs" class="list-group text-center">
 
           </div>
@@ -69,7 +70,7 @@
           </form>
         </div>
         <div class="panel-footer text-center">
-
+          <span style="visibility: hidden;"> Add Client</span>
         </div>
       </div>
     </div>
@@ -88,18 +89,20 @@
               <thead>
                   <tr>
                       <th>File Name</th>
-                      <th>Client</th>
                       <th>Date</th>
                       <th>Comment</th>
                   </tr>
               </thead>
               <tbody>
+                {{#each files}}
                   <tr>
-                      <td>File Name*</td>
-                      <td>Client*</td>
-                      <td>Date*</td>
-                      <td>Comment*</td>
+                      <td>{{this.path}}</td>
+                      <td>
+                        {{this.updatedAt}}
+                      </td>
+                      <td>{{this.comment}}</td>
                   </tr>
+                  {{/each}}
               </tbody>
           </table>
         </div>

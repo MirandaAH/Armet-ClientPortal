@@ -44,12 +44,10 @@ module.exports = function(app) {
           }
         }),
         db.Docs.findAll({
-          where: {
-            UserId: request.user.id
-          }
         })
       ])
         .then((data) => {
+          console.log(JSON.stringify(data[0]));
           let hbsObject = {
             arch: data[0],
             contact: data[1],

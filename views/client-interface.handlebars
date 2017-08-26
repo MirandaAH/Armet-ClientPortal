@@ -8,9 +8,8 @@
         <div class="panel-heading text-center">
           Files:
         </div>
-        <div class="panel-body">
-          <div class="list-group text-center">
-            <table class="table table-hover">
+        <div class="panel-body" style="min-height: 250px;">
+            <table class="table table-hover text-center">
               <thead>
                 <tr>
                   <th>File Name</th>
@@ -27,21 +26,21 @@
               </tbody>
             </table>
           </div>
+          <div class="panel-footer"></div>
         </div>
       </div>
-    </div>
     <div class="col-sm-4">
       <div class="panel panel-default">
         <div class="panel-heading text-center">
           Add Comment *Select File*:
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="min-height: 250px;">
           <div class="file-comments">
             <form id="fcId" action="/comment?_method=PUT" method="POST" class="form">
               <div class="form-group">
                 <textarea class="form-control" rows="5" name="comment" id="comment"></textarea>
               </div>
-                <button class="btn btn-md" id="comment-btn" type="submit">Submit</button>
+                <button class="btn btn-md" id="comment-btn" type="submit" style="width:100%;">Submit</button>
             </form>
           </div>
         </div>
@@ -52,26 +51,17 @@
     <div class="col-sm-4">
       <div class="panel panel-default">
         <div class="panel-heading text-center">
-          Responses
+          Downloads:
         </div>
-        <div class="panel-body notes">
-
-            <table class="table table-hover text-center">
-              <thead>
-                <tr>
-                  <th>File Name</th>
-                  <th>Architect</th>
-                  <th>Response</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>Doe</td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="panel-body notes" style="min-height: 250px;">
+          <div class="form-group text-center" style="width: 100%; margin: 0 auto; position: relative; top: 75px;">
+            <select class="state form-control" name="downloads" id="downloads" onchange="window.location.href=this.value">
+              <option>Select One</option>
+              {{#each files}}
+                <option value="/download/{{this.path}}">{{this.path}}</option>
+              {{/each}}
+            </select>
+          </div>
         </div>
         <div class="panel-footer text-center">
 
@@ -81,19 +71,7 @@
   </div>
 </div>
 
-<div class="container text-center" style="margin-bottom: 30px;">
-    <div class="form-group text-center" style="width: 30%; margin: 0 auto;">
-      <label for="downloads">Downloads:</label>
-      <select class="state form-control" name="downloads" id="downloads" onchange="window.location.href=this.value">
-        <option>Select One</option>
-        {{#each files}}
-          <option value="/download/{{this.path}}">{{this.path}}</option>
-        {{/each}}
-      </select>
-    </div>
-</div>
-
-<div class="container-fluid" style="padding: 0; margin: 0;">
+<div class="container-fluid" style="padding: 0; margin: 150px 0 0 0;">
     <div class="row" style="padding:0; margin:0; width: 100%; background-color: #F5F5F5;">
         <div class="col-sm-12 text-center" style="padding: 5px 0; background-color: #F5F5F5;">
             <a href="/logout"><button class="btn btn-default btn-sm">Logout</button></a>
