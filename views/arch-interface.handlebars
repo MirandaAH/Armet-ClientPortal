@@ -14,7 +14,7 @@
             {{/each}}
           </div>
         </div>
-        <div class="panel-footer text-center"><a href="/addClientPage">Add Client</a></div>
+        <div class="panel-footer text-center"><a href="/addClientPage" style="color:black; text-decoration: underline;">Add Client</a></div>
       </div>
     </div>
     <div class="col-sm-4">
@@ -75,6 +75,40 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          Comments:
+        </div>
+        <div class="panel-body">
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>File Name</th>
+                      <th>Client</th>
+                      <th>Date</th>
+                      <th>Comment</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>File Name*</td>
+                      <td>Client*</td>
+                      <td>Date*</td>
+                      <td>Comment*</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+        <div class="panel-footer text-center">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="container-fluid" style="padding: 0; margin: 0;">
     <div class="row" style="padding:0; margin:0; width: 100%; background-color: #F5F5F5;">
@@ -99,15 +133,9 @@
                         <table class="table table-hover">
                             <tbody>
                                 {{#each arch}}
-<<<<<<< HEAD
                                 <tr onClick="getClient({{this.id}})">
                                     <td >
                                         <a>
-=======
-                                <tr>
-                                    <td>
-                                        <a onclick="getClient({{this.id}})">
->>>>>>> some design changes
                                             <li>
                                                 {{this.Contact.first_name}} {{this.Contact.last_name}}
                                             </li>
@@ -235,7 +263,7 @@
             url: '/getClientData/' + x,
             method: 'GET'
         }).then(function (response) {
-            $('#userDocs').html('<tr><td>File Name</td></tr>');
+            $('#userDocs').html('');
             $('#clientAddr').html(response[0].addr_number + ' ' +
                 response[0].addr_street + ' Apt. ' + response[0].apt_number + ' <br>' +
                 response[0].city + ', ' + response[0].state + ' ' + response[0].zip_code);

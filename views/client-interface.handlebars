@@ -1,4 +1,99 @@
-<link rel="stylesheet" href="css/client-styles.css">
+<link rel="stylesheet" href="css/arch-styles.css">
+<div class="container-fluid text-center" style="padding:10px 0; margin:0 0 30px 0; width: 100%; background-color: #F5F5F5;">Logged in as: {{contact.first_name}} {{contact.last_name}}</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class=" panel panel-default">
+        <div class="panel-heading text-center">
+          Files:
+        </div>
+        <div class="panel-body">
+          <div class="list-group text-center">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>File Name</th>
+                  <th>Date Uploaded</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each files}}
+                  <tr>
+                    <td><a href="/download/{{this.path}}">{{this.path}}</a></td>
+                    <td>{{this.createdAt}}</td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          Add Comment *Select File*:
+        </div>
+        <div class="panel-body">
+          <div class="file-comments">
+            <form>
+            <div class="form-group">
+              <textarea class="form-control" rows="5" id="comment"></textarea>
+            </div>
+            <div class="form-group text-center">
+              <button class="btn btn-md" type="button">Submit</button>
+            </div>
+            </form>
+          </div>
+        </div>
+        <div class="panel-footer text-center">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          Responses
+        </div>
+        <div class="panel-body notes">
+
+            <table class="table table-hover text-center">
+              <thead>
+                <tr>
+                  <th>File Name</th>
+                  <th>Architect</th>
+                  <th>Response</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>Doe</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <div class="panel-footer text-center">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" style="padding: 0; margin: 0;">
+    <div class="row" style="padding:0; margin:0; width: 100%; background-color: #F5F5F5;">
+        <div class="col-sm-12 text-center" style="padding: 5px 0; background-color: #F5F5F5;">
+            <a href="/logout"><button class="btn btn-default btn-sm">Logout</button></a>
+            <a href="/archSettings"><button class="btn btn-default btn-sm">Settings</button></a>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <link rel="stylesheet" href="css/client-styles.css">
 <div class="panel panel-default" style="width: 100%">
     <div class="panel-heading">Logged in as: {{contact.first_name}} {{contact.last_name}}
     </div>
@@ -17,8 +112,8 @@
                             </thead>
                             <tbody>
                               {{#each files}}
-                                <tr>
-                                    <td>{{this.path}}</td>
+                              <tr>
+                                    <td><a href="/download/{{this.path}}">{{this.path}}</a></td>
                                     <td>{{this.createdAt}}</td>
                                 </tr>
                               {{/each}}
@@ -85,4 +180,4 @@
         </div>
     </div>
 </div>
-<script src="js/arch-view.js"></script>
+<script src="js/arch-view.js"></script> -->
