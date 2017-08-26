@@ -11,9 +11,9 @@
                         <table class="table table-hover">
                             <tbody>
                                 {{#each arch}}
-                                <tr>
-                                    <td>
-                                        <a onClick="getClient({{this.id}})">
+                                <tr onClick="getClient({{this.id}})">
+                                    <td >
+                                        <a>
                                             <li>
                                                 {{this.Contact.first_name}} {{this.Contact.last_name}}
                                             </li>

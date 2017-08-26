@@ -22,11 +22,6 @@ body {
 }
 .col-lg-9 {
     margin: 0px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-
 }
 .panel {
     width: 97%;
@@ -54,12 +49,12 @@ body {
     min-height: 250px;
     height: 100%;
 }
-.bot-tag {
+/* .bot-tag {
     position: absolute;
     bottom: 5px;
     margin-top: 10px;
-}
-.fillable {
+} */
+.panel-body {
     overflow: scroll; 
 }
 a:hover {
