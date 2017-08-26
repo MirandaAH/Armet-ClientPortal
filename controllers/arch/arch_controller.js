@@ -31,7 +31,6 @@ module.exports = function(app) {
 
 //Navigate to Arch-Settings
   app.get('/archSettings', isAuthenticated, function(request, response) {
-    if (request.user.kind !== 'arch') { response.redirect('/logout'); }
     Promise.all([
       db.Contact.findOne({
         where: {
@@ -42,12 +41,12 @@ module.exports = function(app) {
       let hbsObject = {
         contact: data[0]
       };
-      response.render('arch-settings', hbsObject);
+      response.render('settings', hbsObject);
     }).catch((error) => {
       console.log(error);
     })
 
-  })
+  });
 
 //Add new client
   app.post('/api/addClient', isAuthenticated, function(request, response) {
