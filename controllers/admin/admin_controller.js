@@ -49,21 +49,24 @@ module.exports = function(app) {
   });
 
     //Add new arch
-      app.post('/api/admin/addArch', isAuthenticated, function(request, response) {
-        if (request.user.kind !== 'admin') { response.redirect('/logout'); }
-        Promise.all([
-          db.User.findAll({
-            attributes: ['id']
-          }),
+    app.post('/api/admin/addArch', isAuthenticated, function(request, response) {
+      if (request.user.kind !== 'admin') { response.redirect('/logout'); }
+      Promise.all([
           db.User.create({
             email: request.body.email,
             password: request.body.password,
             kind: 'arch',
             assoc: 0
           })
-        ])
-        .then((data) => {
-          let x = data[0][0].id + 1; //Assumes id value with largest integer is at index 0 and no other larger id values have been deleted
+      ])
+      .then((data) => {
+        Promise.all([
+          db.User.findOne({
+            where: {
+              email: request.body.email
+            }
+          })
+        ]).then((data) => {
           Promise.all([
             db.Contact.create({
               first_name:  request.body.first_name.trim(),
@@ -76,34 +79,37 @@ module.exports = function(app) {
               city:  request.body.city.trim(),
               state:  request.body.state.trim(),
               phone_number:  request.body.phone_number.trim(),
-              UserId: x
+              UserId: data[0].id
             })
           ])
-          .then((data) => {
-            response.redirect('/completeLogin');
-          })
         })
-        .catch((error) => {
-        console.log(error);
-        });
+        .then((data) => {
+          response.redirect('/completeLogin');
+        }).catch((error) => { console.log(error) });
+      })
+      .catch((error) => {
+      console.log(error);
       });
+    });
 
-      //Add new client
-        app.post('/api/admin/addClient', isAuthenticated, function(request, response) {
-          if (request.user.kind !== 'admin') { response.redirect('/logout'); }
-          Promise.all([
-            db.User.findAll({
-              attributes: ['id']
-            }),
+      app.post('/api/admin/addClient', isAuthenticated, function(request, response) {
+        if (request.user.kind !== 'admin') { response.redirect('/logout'); }
+        Promise.all([
             db.User.create({
               email: request.body.email,
               password: request.body.password,
               kind: 'client',
               assoc: request.body.assoc
             })
-          ])
-          .then((data) => {
-            let x = data[0][0].id + 1; //Assumes id value with largest integer is at index 0 and no other larger id values have been deleted
+        ])
+        .then((data) => {
+          Promise.all([
+            db.User.findOne({
+              where: {
+                email: request.body.email
+              }
+            })
+          ]).then((data) => {
             Promise.all([
               db.Contact.create({
                 first_name:  request.body.first_name.trim(),
@@ -116,17 +122,18 @@ module.exports = function(app) {
                 city:  request.body.city.trim(),
                 state:  request.body.state.trim(),
                 phone_number:  request.body.phone_number.trim(),
-                UserId: x
+                UserId: data[0].id
               })
             ])
-            .then((data) => {
-              response.redirect('/completeLogin');
-            })
           })
-          .catch((error) => {
-          console.log(error);
-          });
+          .then((data) => {
+            response.redirect('/completeLogin');
+          }).catch((error) => { console.log(error) });
+        })
+        .catch((error) => {
+        console.log(error);
         });
+      });
 
 //Add new Administrator
   app.post('/api/admin/addAdmin', isAuthenticated, function(request, response) {
